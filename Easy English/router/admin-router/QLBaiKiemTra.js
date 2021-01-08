@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
         res.render('admin/BaiKiemTra/QLBaiKiemTra', {
             Loai: row1,
             ListKT: row,
-            layout: './indexAdmin'
+            layout: './index'
         })
     })
 })
@@ -48,7 +48,7 @@ router.get('/editbaikt/:id', (req, res) => {
         res.render('admin/BaiKiemTra/EditBaiKiemTra', {
             detail: row,
             LoaiBai: row1,
-            layout: './indexAdmin'
+            layout: './index'
         })
     })
 })
@@ -95,7 +95,7 @@ router.post('/LocBaiKT', (req, res) => {
             res.render('admin/BaiKiemTra/QLBaiKiemTra', {
                 Loai: cate1,
                 ListKT: cate2,
-                layout: './indexAdmin'
+                layout: './index'
             });
         })
     }
@@ -104,22 +104,22 @@ router.post('/LocBaiKT', (req, res) => {
 
 router.get('/addKT', (req, res) => {
     baikiemtraModel.GetLoai().then(row => {
-        res.render('admin/BaiKiemTra/AddBaiKiemTra',{
-            Loai : row,
-            layout: './indexAdmin'
+        res.render('admin/BaiKiemTra/AddBaiKiemTra', {
+            Loai: row,
+            layout: './index'
         })
-    })    
+    })
 })
 
 router.post('/addKT', (req, res) => {
     var temp = req.body;
-    var dob = moment(temp.date,'DD/MM/YYYY').format('YYYYY/MM/DD');
+    var dob = moment(temp.date, 'DD/MM/YYYY').format('YYYYY/MM/DD');
     var entity = {
         DapAn: temp.DapAn,
-        NgayDang : dob,
-        LoaiBai : temp.Loai,
-        TieuDe : temp.TieuDe,
-        NoiDung : temp.NoiDung,
+        NgayDang: dob,
+        LoaiBai: temp.Loai,
+        TieuDe: temp.TieuDe,
+        NoiDung: temp.NoiDung,
         Xoa: 0,
     }
     baikiemtraModel.add(entity).then(row => {

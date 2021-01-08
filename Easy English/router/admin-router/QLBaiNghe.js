@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
         res.render('admin/BaiNghe/QLBaiNghe', {
             MucDo: row1,
             listBN: row,
-            layout: './indexAdmin'
+            layout: './index'
         })
     })
 
@@ -48,8 +48,8 @@ router.get('/edit/:id', (req, res) => {
         }
         res.render('admin/BaiNghe/EditBaiNghe', {
             dsLoai: row,
-            baiNghe : row1[0],
-            layout: './indexAdmin'
+            baiNghe: row1[0],
+            layout: './index'
         })
     })
 
@@ -58,14 +58,14 @@ router.get('/edit/:id', (req, res) => {
 router.post('/edit/:id', (req, res) => {
     var id = req.params.id;
     var temp = req.body;
-    var nd = moment(temp.date,'DD/MM/YYYY').format('YYYY/MM/DD');
+    var nd = moment(temp.date, 'DD/MM/YYYY').format('YYYY/MM/DD');
     var entity = {
-        idBaiNghe : id,
-        CDBaiHoc : temp.Loai,
-        NgayDang : nd,
+        idBaiNghe: id,
+        CDBaiHoc: temp.Loai,
+        NgayDang: nd,
         tenBai: temp.TenBai,
         FileAmThanh: temp.AmThanh,
-        HinhAnh : temp.Anh,
+        HinhAnh: temp.Anh,
         Script: temp.script,
         DapAn: temp.DapAn,
         BaiTap: temp.NoiDung
@@ -101,7 +101,7 @@ router.post('/LocBaiNghe', (req, res) => {
             res.render('admin/BaiNghe/QLBaiNghe', {
                 MucDo: cate1,
                 listBN: cate2,
-                layout: './indexAdmin'
+                layout: './index'
             });
         })
     }
@@ -123,8 +123,8 @@ router.get('/addBai', (req, res) => {
     baingheModel.GetLoai().then(row => {
         var a = 2;
         res.render('admin/BaiNghe/AddBaiNghe', {
-            MucDo : row,
-            layout: './indexAdmin'
+            MucDo: row,
+            layout: './index'
         })
     })
 })
@@ -132,13 +132,13 @@ router.get('/addBai', (req, res) => {
 
 router.post('/addBai', (req, res) => {
     var temp = req.body;
-    var nd = moment(temp.date,'DD/MM/YYYY').format('YYYY/MM/DD');
+    var nd = moment(temp.date, 'DD/MM/YYYY').format('YYYY/MM/DD');
     var entity = {
-        CDBaiHoc : temp.Loai,
-        NgayDang : nd,
+        CDBaiHoc: temp.Loai,
+        NgayDang: nd,
         tenBai: temp.TenBai,
         FileAmThanh: temp.AmThanh,
-        HinhAnh : temp.Anh,
+        HinhAnh: temp.Anh,
         Script: temp.script,
         DapAn: temp.DapAn,
         BaiTap: temp.NoiDung,

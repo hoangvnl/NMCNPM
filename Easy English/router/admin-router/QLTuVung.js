@@ -29,8 +29,6 @@ router.get('/', (req, res) => {
 router.post('/loc', (req, res, next) => {
     var id = req.body.LoaiTu;
 
-    console.log('day day day day day-----------------------------------------------------------------------------------------');
-    console.log(req.body);
     if (isNaN(id)) {
         res.redirect('/quanly/tuvung')
     }

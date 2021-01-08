@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         }
         res.render('admin/NguPhap/QLNguPhap', {
             dsCauTruc: rows,
-            layout: './indexAdmin'
+            layout: './index'
         })
     })
 
@@ -28,7 +28,7 @@ router.get('/chitiet/:id', (req, res) => {
         res.render('admin/NguPhap/EditNguPhap', {
             Check: check,
             chitiet: row,
-            layout: './indexAdmin'
+            layout: './index'
         })
     })
 })
@@ -68,7 +68,7 @@ router.get('/add', (req, res) => {
     res.render('admin/NguPhap/EditNguPhap', {
         Check: check,
         Nowday: nowday,
-        layout: './indexAdmin'
+        layout: './index'
     })
 })
 
@@ -92,7 +92,7 @@ router.post('/add', (req, res) => {
         res.redirect('/admin/nguphap')
     });
 
-    
+
 })
 
 

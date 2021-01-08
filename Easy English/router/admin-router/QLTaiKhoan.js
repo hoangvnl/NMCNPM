@@ -28,7 +28,7 @@ router.get('/edit/:id', (req, res, next) => {
     userModel.GetAllById(id).then(tk => {
         res.render('admin/TaiKhoan/EditTaiKhoan', {
             member: tk[0],
-            layout: './indexAdmin'
+            layout: './index'
 
         }).catch(err => {
             console.log(err);
@@ -58,8 +58,8 @@ router.get('/edit/:id', (req, res, next) => {
 router.post('/edit/:id', (req, res, next) => {
     var id = req.params.id;
     var temp = req.body;
-    var dob = moment(temp.date,'DD/MM/YYYY').format('YYYY/MM/DD');
-    var create = moment(temp.registerDay,'DD/MM/YYYY').format('YYYY/MM/DD');
+    var dob = moment(temp.date, 'DD/MM/YYYY').format('YYYY/MM/DD');
+    var create = moment(temp.registerDay, 'DD/MM/YYYY').format('YYYY/MM/DD');
     userModel.getRowByid(id).then(row => {
         var entity = {
             idTaiKhoan: row[0].idTaiKhoan,

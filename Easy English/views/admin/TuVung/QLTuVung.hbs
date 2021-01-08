@@ -78,9 +78,7 @@
                 tentv: {
                     required: true
                 },
-                CachPhatAm: {
-                    required: true
-                },
+
                 chude: {
                     required: true
                 },
@@ -93,20 +91,14 @@
                 Vidu: {
                     required: true
                 },
-                fileAmThanh: {
-                    required: true
-                },
-                fileHinh: {
-                    required: true
-                }
+
+
             },
             messages: {
                 tentv: {
                     required: 'Nhập chính xác từ vựng'
                 },
-                CachPhatAm: {
-                    required: 'Nhập chính xác cách phát âm'
-                },
+
                 chude: {
                     required: 'Nhập chính xác chủ đề'
                 },
@@ -119,12 +111,8 @@
                 Vidu: {
                     required: 'Nhập chính xác ví dụ'
                 },
-                fileAmThanh: {
-                    required: 'Nhập chính xác link âm thanh'
-                },
-                fileHinh: {
-                    required: 'Nhập chính xác link hình ảnh'
-                }
+
+
             },
             errorElement: 'small',
             errorClass: 'col help-block text-danger',
@@ -139,7 +127,7 @@
 </script>
 {{/section}}
 
-
+{{#if isAuthenticated}}
 <div class="mt-3">
     <div class="title ml-3 mr-3 text-black">
         <h2><b>Quản lý từ vựng</b></h2>
@@ -238,12 +226,12 @@
                     <td>STT</td>
                     <td class="col1">Từ vựng </td>
                     <td>Loại từ</td>
-                    <td class="col1">Phiên âm</td>
+
                     {{!-- <td class="col2" style="width:100px">File đọc</td> --}}
                     <td>Chủ đề</td>
                     <td class="col1">Ý nghĩa</td>
                     <td>Ví dụ</td>
-                    <td>Hình ảnh</td>
+
                     <td>Hành động </td>
                 </tr>
             </thead>
@@ -253,12 +241,12 @@
                     <td>{{stt}}</td>
                     <td>{{TenTuVung}}</td>
                     <td>{{LoaiTu}}</td>
-                    <td>{{PhienAm}}</td>
+
                     {{!-- <td>{{FileAmThanh}} <a href=""><i class="fas fa-headphones-alt"></i></a></td> --}}
                     <td>{{ChuDe}}</td>
                     <td>{{{YNghia}}}</td>
                     <td>{{ViDu}}</td>
-                    <td><img src="{{FileHinhAnh}}" alt="" class="img-sm"></td>
+
                     <td>
                         <button class="btn mb-2" value="{{idTuVung}}" data-toggle="modal" data-target="#delModal"><i
                                 class="fas fa-minus-circle"></i></button>
@@ -302,9 +290,7 @@
                         <div class="col-md-6">
                             <input name="tentv" type="text" class="form-control border" placeholder="Tên từ vựng">
                         </div>
-                        <div class="col-md-5">
-                            <input name="CachPhatAm" type="text" class="form-control border" placeholder="Cách phát âm">
-                        </div>
+
                         <div class="col-md-6 mt-3">
 
                             <select name="chude" class="form-control border col-md-12">
@@ -330,16 +316,6 @@
                         </div>
                         <div class="col-md-11 mt-3">
                             <textarea name="Vidu" class="form-control border" placeholder="Ví dụ"></textarea>
-                        </div>
-
-                        <div class="col-md-11 mt-3">
-                            Link âm thanh:
-                            <input name="fileAmThanh" type="text" class="form-control border"
-                                placeholder="Link âm thanh">
-                        </div>
-                        <div class="col-md-11 mt-3">
-                            Link hình ảnh:
-                            <input name="fileHinh" type="text" class="form-control border" placeholder="Link hình ảnh">
                         </div>
 
                     </div>
@@ -373,3 +349,13 @@
         </div>
     </div>
 </form>
+{{else}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto blog-content">
+            <h2 class="text-black">Bạn chưa đăng nhập!</h2>
+            <p>Bạn cần phải đăng nhập để có thể xem được bài học.</p>
+        </div>
+    </div>
+</div>
+{{/if}}

@@ -34,14 +34,11 @@ app.set('view engine', 'hbs');
 app.use(require('./middlewares/auth-mdw'));
 app.use(express.static(__dirname + '/public'));
 
-app.use('/admin', require('./router/admin-router/indexAdmin'))
-app.use('/admin', require('./router/admin-router/QLBaiViet'))
-app.use('/admin/bainghe', require('./router/admin-router/QLBaiNghe'))
-app.use('/admin/baikiemtra', require('./router/admin-router/QLBaiKiemTra'))
-app.use('/admin/baiviet', require('./router/admin-router/QLBaiViet'))
-app.use('/admin/taikhoan', require('./router/admin-router/QLTaiKhoan'))
+app.use('/quanly', require('./router/admin-router/indexAdmin'))
+app.use('/quanly', require('./router/admin-router/QLBaiViet'))
+
 app.use('/quanly/tuvung', require('./router/admin-router/QLTuVung'))
-app.use('/admin/nguphap', require('./router/admin-router/QLNguPhap'))
+
 app.use('/login', require('./router/user-router/login'))
 app.use('/', require('./router/user-router/index'))
 app.use('/:idCM', require('./router/user-router/child'));

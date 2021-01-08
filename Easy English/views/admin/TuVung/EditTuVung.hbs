@@ -16,9 +16,7 @@
                 tentv: {
                     required: true
                 },
-                CachPhatAm: {
-                    required: true
-                },
+
                 chude: {
                     required: true
                 },
@@ -31,20 +29,13 @@
                 Vidu: {
                     required: true
                 },
-                fileAmThanh: {
-                    required: true
-                },
-                fileHinh: {
-                    required: true
-                }
+
             },
             messages: {
                 tentv: {
                     required: 'Nhập chính xác từ vựng'
                 },
-                CachPhatAm: {
-                    required: 'Nhập chính xác cách phát âm'
-                },
+
                 chude: {
                     required: 'Nhập chính xác chủ đề'
                 },
@@ -57,12 +48,7 @@
                 Vidu: {
                     required: 'Nhập chính xác ví dụ'
                 },
-                fileAmThanh: {
-                    required: 'Nhập chính xác link âm thanh'
-                },
-                fileHinh: {
-                    required: 'Nhập chính xác link hình ảnh'
-                }
+
             },
             errorElement: 'small',
             errorClass: 'col help-block text-danger',
@@ -98,11 +84,7 @@
                     {{/each}}
                 </select>
             </div>
-            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
-                <label class="col-md-2 ">Cách phát âm:</label>
-                <input class="col-md-7 form-control border" placeholder="Nhập cách phát âm" name="CachPhatAm"
-                    type="text" value="{{this.tuvung.PhienAm}}">
-            </div>
+
             <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
                 <label class="col-md-2">Loại từ:</label>
                 <select style="height: 40px" class="col-md-7 form-control border" name="LoaiTu" id="">
@@ -119,24 +101,16 @@
                 <textarea class="col-md-7 form-control border" placeholder="Ý nghĩa" name="YNghia" type="text"
                     value="{{this.tuvung.YNghia}}">{{this.tuvung.YNghia}}</textarea>
             </div>
-            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
-                <label class="col-md-2 ">Link âm thanh:</label>
-                <input class="col-md-7 form-control border" placeholder="Link âm thanh" name="fileAmThanh" type="text"
-                    value="{{this.tuvung.FileAmThanh}}">
-            </div>
+
             <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
                 <label class="col-md-2">Ví dụ:</label>
                 <textarea class="col-md-7 form-control border" type="text" placeholder="Ví dụ" name="Vidu"
                     value="{{this.tuvung.ViDu}}">{{this.tuvung.ViDu}}</textarea>
             </div>
-            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
-                <label class="col-md-2">Link hình ảnh:</label>
-                <input class="col-md-7 form-control border" type="text" placeholder="Link hình ảnh" name="fileHinh"
-                    value="{{this.tuvung.FileHinhAnh}}">
-            </div>
+
             <div class="col-md-11 ml-5" style="margin-top:20px; display:flex; justify-content:space-between">
-                <a class="btn" href="/admin/tuvung" id="Quaylai">
-                <i class="fa fa-backward">&nbsp;</i>Quay lại
+                <a class="btn" href="/quanly/tuvung" id="Quaylai">
+                    <i class="fa fa-backward">&nbsp;</i>Quay lại
                 </a>
                 <button class="btn " type="submit" id="Them">
                     <i class="fa fa-check">&nbsp;</i>Lưu lại</button>
