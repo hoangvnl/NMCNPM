@@ -1,0 +1,252 @@
+.btn-primary{
+    margin-right: 10px;
+}
+
+.btn-arrow-top{
+    height: 100px;
+    width: 100px;
+    margin-top: 550px;
+    margin-left: 1280px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.btn-round{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: rgb(231, 88, 52);
+    box-shadow: 0px 0px 5px 2px rgb(231, 174, 159);
+    color: white;
+}
+
+.btn-round:hover{
+    background-color: rgb(223, 117, 91);
+    box-shadow: 0px 0px 5px 2px rgb(231, 174, 159);
+}
+
+.dropdown-menu{
+    z-index: 1999;
+    width: 200px;
+}
+
+.dropdown-item:hover{
+   color: rgb(231, 88, 52);
+
+}
+
+#leftmenuinner{
+    overflow-x: hidden;
+    overflow-y: visible;
+    width: 220px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding-top: 80px;
+}
+
+.w3-sidebar{
+    width: 220px !important;
+    /* box-shadow: 0px 2px 10px 0px rgb(236, 169, 152);  */
+}
+
+.w3-bar-item .active{
+    color: rgb(209, 103, 76);
+}
+.w3-bar-item .active:hover{
+    color: rgb(209, 103, 76);
+}
+.blog-content{
+    padding-left: 200px;
+}
+
+.btn-next{
+    float: right;
+   
+    background-color: #dd6b4d;
+    color: white;
+}
+
+.btn-next:hover{
+    background-color: rgb(216, 83, 50);
+    color: white;
+    box-shadow: 2px 2px 5px 0px #DD6B4D;
+}
+
+.contain-button{
+    
+}
+
+.site-footer{
+    margin-top: 200px;
+}
+
+.footer-edit{
+    padding-left: 200px;
+}
+
+.btn-start{
+    margin-top: 10px;
+    margin-left: 45%;
+    background-color: #dd6b4d;
+    color: white;
+}
+
+.btn-start:hover{
+    background-color: rgb(216, 83, 50);
+    color: white;
+    box-shadow: 2px 2px 5px 0px #DD6B4D;
+}
+
+.imgs{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.press-title:hover{
+    color: #DD6B4D !important;
+}
+
+.btn{
+    background-color: #dd6b4d;
+    color: white;
+}
+
+.btn:hover{
+    background-color: rgb(216, 83, 50);
+    color: white;
+    box-shadow: 2px 2px 5px 0px #DD6B4D;
+}
+
+.w3-bar-block{
+    background-color: rgb(246, 252, 223) !important;
+}
+
+.formula{
+    background-color: rgb(167, 249, 252);
+    border-left: 5px solid rgb(0, 72, 105);
+    height: 50px;
+    padding: 10px;
+}
+
+.abc{
+    width: 100% !important;
+}
+
+.nav-title{
+    font-size: 30px;
+}
+
+.sidebar{
+    /* overflow-x: hidden !important;
+    overflow-y: hidden !important; */
+    width: 220px;
+    height: 100% !important;
+    position: fixed;
+    background: linear-gradient(to bottom, rgb(0, 10, 104) 0%, #ff637d 100%);
+    border-right: 1px solid rgb(167, 167, 167);
+}
+
+.logo{
+    font-size: 20px;
+    color: white;
+}
+
+.img-circle{
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+}
+
+ul.site-nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 0;
+    width: 190px;
+    height: 100%;
+    position: fixed;
+}
+
+.nav-link-2{
+    color: white;
+    margin-top: 10px !important;
+}
+
+.nav-link-2:hover{
+    color: rgb(234, 151, 255);
+}
+
+.nav-link-2.active{
+    color: rgb(234, 151, 255);
+}
+
+.home{
+    margin-left: 80px;
+}
+
+.row2{
+    margin: 0;
+    padding: 0;
+}
+
+.borde{
+    border: 1px solid rgb(153, 153, 153);
+}
+
+#signinModal, #passModal, #logoutModal, #ThemCat-Modal, #delModal{
+    margin: auto;
+    width: 30%;
+}
+
+.word-table{
+    width: 100%;
+}
+
+/* table{
+    table-layout: auto;
+} */
+
+.col1{
+    width: 150px;
+}
+
+.col2{
+    width: 20px;
+}
+
+.img-sm{
+    width: 70px;
+    height: 50px;
+}
+
+tbody{
+    cursor: pointer;
+}
+
+.blog-content-2{
+    padding-left: 124px;
+}
+
+.fa-sort{
+    cursor: pointer;
+}
+
+.avatar-user{
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+}
+
+.body-modal{
+    padding-left: 100px;
+}
+
+.fa-volume-up{
+    cursor: pointer;
+}
+
+.fa-volume-up:hover{
+    color: #DD6B4D;
+}

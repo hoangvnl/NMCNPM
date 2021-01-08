@@ -1,0 +1,35 @@
+<div style="padding-top:100px" class="container col-md-5 text-black">
+    <div class="shadow mb-5 bg-white rounded ">
+
+        <form method="POST" action="/login">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="signinModalLabel"><b>ĐĂNG NHẬP</b></h5>
+            </div>
+            <div class="modal-body p-5">
+                {{#if err_message}}
+                <label style="color: red" for="">{{err_message}}</label>
+                {{/if}}
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input type="text" name="email" class="form-control border" placeholder="Nhập Email">
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <input type="password" name="password" class="form-control border" placeholder="Nhập mật khẩu">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center ">
+                <div class="col-md-10 mb-3">
+                    <button type="submit" class="btn btn-block btn-primary text-white py-3 px-5">Đăng
+                        nhập</button>
+                </div>
+            </div>
+            <div class="col-md-12 pb-4">
+                <a data-toggle="modal" style="cursor: pointer;margin-left:65px" data-target="#ChangePass"><b><u>Quên mật
+                            khẩu</u></b></a>
+                <a data-toggle="modal" style="float:right;cursor: pointer;margin-right:100px"
+                    data-target="#signupModal"><b><u>Đăng kí</u></b></a>
+            </div>
+        </form>
+    </div>
+</div>

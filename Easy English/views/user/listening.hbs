@@ -1,0 +1,151 @@
+{{#section 'js'}}
+<script>
+    $(document).ready(function () {
+        $("#showresult").click(function () {
+            $("#result").show();
+        });
+    }); 
+</script>
+{{/section}}
+
+{{#if isAuthenticated}}
+<section class="site-section">
+    <div class="container text-black">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    {{#each Bainghe}}
+                    <div>
+                        <h2 class="mx-auto">{{tenBai}}</h2>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <audio controls>
+                            <source src="{{FileAmThanh}}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <br>
+                    <div>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                                    aria-controls="contact" aria-selected="false">Question</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">Script</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+
+                            <div class="tab-pane fade show active" id="contact" role="tabpanel"
+                                aria-labelledby="contact-tab">
+                                {{{BaiTap}}}
+
+                                <div class="col-md-12 text-center">
+                                    <a href="#" class="btn" id="showresult">Đáp án</a>
+                                </div>
+                                <div id="result" style="display: none">
+                                    <b>Đáp Án</b>
+                                    {{{DapAn}}}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <p>{{{Script}}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="col-md-12">
+                    <span class="col-md-5 float-left">
+                        <a href="#" class="btn"> <i class="far fa-hand-point-left"></i> Quay về</a>
+                    </span>
+                    <span class="col-md-7 d-flex justify-content-end">
+                        <a href="#" class="btn"> Bài tiếp theo <i class="far fa-hand-point-right"></i> </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="comment-form-wrap shadow mt-5 col-12 pt-3">
+            <h3 class="text-black"><b>Bình Luận</b></h3>
+            <hr>
+            <div class="row pt-3 col-md-12">
+                <ul class="comment-list">
+                    {{#each CommentBN}}
+                    <li class="comment d-flex flex-nowrap"  style="width:800px">
+                         <div class="mr-3 p-3">
+                            <img style="width: 50px; height:50px"
+                                src="https://cdn.designbyhumans.com/product_images/p/898810.f56.f949aS7ay1Cm2MjUAAA-650x650-b-p.jpg"
+                                alt="">
+                        </div>
+                        <div class="comment-body">
+                            <h3><b>{{hoten}}</b></h3>
+                            <div class="meta">{{format NgayDang}}</div>
+                            <p>{{NoiDung}}</p>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <hr>
+           <form method="POST" class="p-3 bg-light">
+                <div class="d-flex flex-nowrap">
+                    <div class="mr-3 pt-5">
+                        <img style="width: 100px; height:100px"
+                            src="https://cdn.designbyhumans.com/product_images/p/818332.f56.b5340S7ay1Cm2MjUAAA-650x650-b-p.jpg"
+                            alt="">
+                    </div>
+                    <div class="form-group col-md-10">
+                        <label for="message">Nhập ở đây</label>
+                        <textarea name="comment" id="message" cols="30" rows="5" class="form-control border"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-left:600px">
+                    <button type="submit" class="btn btn-primary py-3 px-5">Gửi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{{else}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto blog-content">
+            <h2 class="text-black">Bạn chưa đăng nhập!</h2>
+            <p>Bạn cần phải đăng nhập để có thể xem được bài học.</p>
+        </div>
+    </div>
+</div>
+{{/if}}
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
+            </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+                <div class="border-top pt-5">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made
+                        with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

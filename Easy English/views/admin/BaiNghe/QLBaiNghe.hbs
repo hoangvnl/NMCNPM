@@ -1,0 +1,189 @@
+{{#section 'js'}}
+<script>
+    $("button").click(function () {
+        var a = $(this).val();
+        $('#FormDelete2').attr('action', '/admin/bainghe/delete/' + a);
+
+    })
+
+    $('#select').on('change', function () {
+        $('#formcate').submit();
+    });
+</script>
+{{/section}}
+
+
+<div class="mt-3">
+    <div class="title ml-3 mr-3 text-black">
+        <h2><b>Quản Lý Phần Luyện Nghe</b></h2>
+        <hr>
+    </div>
+
+    <form id="formcate" action="/admin/bainghe/LocBaiNghe" method="POST">
+        <div class="col-md-12 ml-4 mt-3 d-flex flex-nowrap">
+            <div class="d-flex flex-nowrap col-md-9">
+                <div class="d-flex flex-nowrap col-md-10">
+                    <label for="" class="col-md-4">Lọc theo mức độ:</label>
+                    <select id="select" name="select" class="form-control border col-md-5">
+                        <option>Cấp độ luyện nghe</option>
+                        {{#each this.MucDo}}
+                        <option {{#if isSelected}} selected {{/if}} value="{{idCDBaiHoc}}">{{TenBai}}</option>
+                        {{/each}}
+                    </select> &nbsp;
+                    <a href="#" class="col-md-3" data-toggle="modal" data-target="#ThemCat-Modal"><i class="fas fa-plus-circle"></i>
+                        Thêm mức độ</a>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-end">
+                <a id="btnThem" href="/admin/bainghe/addBai" class="btn">
+                    <i class="fas fa-plus-circle"></i> Thêm bài học</a>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-md-12 mt-3">
+        <table class="table table-hover table-dark word-table datatable" id="myTable">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Tên bài học </td>
+                    <td>Mức độ</td>
+                    <td>Ngày đăng </td>
+                    <td>Hành động</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each listBN}}
+                <tr>
+                    <td>{{a}}</td>
+                    <td>{{tenBai}}</td>
+                    <td>{{TenBai}}</td>
+                    <td>{{format NgayDang}}</td>
+                    <td>
+                        <button class="btn" value="{{idBaiNghe}}" data-toggle="modal" data-target="#delModal2">
+                            <i class="fas fa-minus-circle"></i>
+                        </button>
+                        <a class="btn" href="/admin/bainghe/edit/{{idBaiNghe}}"><i class="far fa-eye"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+{{!-- <div class="modal fade" id="Them-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="logoutModalLabel"><b>THÊM BÀI HỌC</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="GET">
+                    <div class="form-group row ml-5">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control border" placeholder="Tên bài học">
+                        </div>
+
+                        <div class="col-md-6">
+                            <select name="" class="form-control border col-md-6">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="col-md-11 mt-3">
+                            File Nghe:
+                            <input type="file" class="form-control border" placeholder="File âm thanh">
+                        </div>
+                        <div class="col-md-11 mt-3">
+                            File Script:
+                            <input type="file" class="form-control border" placeholder="File âm thanh">
+                            <p class="mt-3 ml-5">Hoặc <a href="">Viết bài tại đây</a></p>
+                        </div>
+                        <div class="col-md-11">
+                            File Bài tập:
+                            <input type="file" class="form-control border" placeholder="File âm thanh">
+                            <p class="mt-3 ml-5">Hoặc <a href="">Viết bài tại đây</a></p>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12 p-3 text-center">
+                <button class="btn btn-exit">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+
+<div class="modal fade" id="delModal2" tabindex="-2" role="dialog" aria-labelledby="delModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="delModalLabel1"><b>XÓA BÀI</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" id="FormDelete2">
+                <div class="modal-body">
+                    Bạn thật sự muốn xóa bài này?
+                </div>
+                <div class="col-md-12 p-3 text-center">
+                    <a href="javascript: $('#FormDelete2').submit()" class="btn btn-danger">Đồng ý</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ThemCat-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="logoutModalLabel"><b>THÊM MỨC ĐỘ</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="/admin/bainghe/addLoai">
+                <div class="modal-body">
+
+                    <div class="form-group row ">
+                        <div class="col-md-12">
+                            <input name="newCD" type="text" class="form-control border" placeholder="Tên mức độ">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 p-3 text-center">
+                    <button type="submit" class="btn btn-exit">Thêm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,375 @@
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script>
+    $('#select').on('change', function () {
+        $('#formcate').submit();
+    });
+
+    $("button").click(function () {
+        var a = $(this).val();
+        $('#FormDelete').attr('action', '/quanly/tuvung/delete/' + a);
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#AddForm').validate({
+            rules: {
+                Cate: {
+                    required: true,
+                    remote: {
+                        url: '/quanly/tuvung/is-exsist'
+                    }
+                }
+            },
+            messages: {
+
+                Cate: {
+                    required: 'Yêu cầu nhập tên loại',
+                    remote: 'Loại từ vựng đã tồn tại'
+                }
+            },
+            errorElement: 'small',
+            errorClass: 'col help-block text-danger',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
+        })
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#EditForm').validate({
+            rules: {
+                Cate: {
+                    required: true,
+                    remote: {
+                        url: '/quanly/tuvung/is-exsist'
+                    }
+                }
+            },
+            messages: {
+
+                Cate: {
+                    required: 'Yêu cầu nhập tên loại',
+                    remote: 'Loại từ vựng đã tồn tại'
+                }
+            },
+            errorElement: 'small',
+            errorClass: 'col help-block text-danger',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
+        })
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#formAdd').validate({
+            rules: {
+                tentv: {
+                    required: true
+                },
+                CachPhatAm: {
+                    required: true
+                },
+                chude: {
+                    required: true
+                },
+                LoaiTu: {
+                    required: true
+                },
+                YNghia: {
+                    required: true
+                },
+                Vidu: {
+                    required: true
+                },
+                fileAmThanh: {
+                    required: true
+                },
+                fileHinh: {
+                    required: true
+                }
+            },
+            messages: {
+                tentv: {
+                    required: 'Nhập chính xác từ vựng'
+                },
+                CachPhatAm: {
+                    required: 'Nhập chính xác cách phát âm'
+                },
+                chude: {
+                    required: 'Nhập chính xác chủ đề'
+                },
+                LoaiTu: {
+                    required: 'Nhập chính xác loại từ'
+                },
+                YNghia: {
+                    required: 'Nhập chính xác ý nghĩa'
+                },
+                Vidu: {
+                    required: 'Nhập chính xác ví dụ'
+                },
+                fileAmThanh: {
+                    required: 'Nhập chính xác link âm thanh'
+                },
+                fileHinh: {
+                    required: 'Nhập chính xác link hình ảnh'
+                }
+            },
+            errorElement: 'small',
+            errorClass: 'col help-block text-danger',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
+        })
+    })
+</script>
+{{/section}}
+
+
+<div class="mt-3">
+    <div class="title ml-3 mr-3 text-black">
+        <h2><b>Quản lý từ vựng</b></h2>
+        <hr>
+    </div>
+    <div class="col-md-12 ml-5 mt-3 d-flex flex-nowrap">
+        <div class="col-md-9">
+
+            <form method="POST" action="/quanly/tuvung/loc" id="formcate">
+                <div class="d-flex flex-nowrap">
+                    <select class="form-control border" id="select" name="LoaiTu" style="height: 40px; width:300px">
+                        <option>Chọn bộ từ vựng</option>
+                        {{#each this.chude}}
+                        <option {{#if isSelected}} selected {{/if}} value="{{idCDBaiHoc}}">{{TenBai}}</option>
+                        {{/each}}
+                    </select>
+                    &nbsp;
+                    <a href="#" class="ml-2 mt-2" data-toggle="modal" data-target="#ThemCat-Modal"><i
+                            class="fas fa-plus-circle"></i>
+                        Thêm bộ từ vựng
+                    </a>
+                </div>
+
+                {{!-- <a href="" id="editcate" data-toggle="modal" data-target="#EditCat-Modal">
+                    Chỉnh sửa
+                </a> --}}
+            </form>
+        </div>
+        <div class="col-md-2 d-flex justify-content-end">
+            <button id="btnThem" class="btn" data-toggle="modal" data-target="#Them-Modal">
+                <i class="fas fa-plus-circle"></i> Thêm từ</button>
+        </div>
+    </div>
+
+    <form action="/quanly/tuvung/addCate" id="AddForm" method="POST">
+        <div class="modal fade" id="ThemCat-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="logoutModalLabel"><b>THÊM BỘ TỪ VỰNG</b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row ">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control border" name="Cate"
+                                    placeholder="Tên loại từ vựng">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 p-3 text-center">
+                        <button type="submit" class="btn btn-exit">Thêm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {{!-- <form action="/admin/tuvung/EditCate" id="EditForm" method="POST">
+        <div class="modal fade" id="EditCat-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="logoutModalLabel"><b>CHỈNH SỬA LOẠI TỪ VỰNG</b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row ">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control border" name="Cate"
+                                    placeholder="Tên loại từ vựng">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 p-3 text-center">
+                        <button type="submit" class="btn btn-exit">Lưu lại</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> --}}
+
+
+    <div class="col-md-12 mt-3">
+        <table class="table table-hover table-dark word-table datatable" id="myTable">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td class="col1">Từ vựng </td>
+                    <td>Loại từ</td>
+                    <td class="col1">Phiên âm</td>
+                    {{!-- <td class="col2" style="width:100px">File đọc</td> --}}
+                    <td>Chủ đề</td>
+                    <td class="col1">Ý nghĩa</td>
+                    <td>Ví dụ</td>
+                    <td>Hình ảnh</td>
+                    <td>Hành động </td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.listTV}}
+                <tr>
+                    <td>{{stt}}</td>
+                    <td>{{TenTuVung}}</td>
+                    <td>{{LoaiTu}}</td>
+                    <td>{{PhienAm}}</td>
+                    {{!-- <td>{{FileAmThanh}} <a href=""><i class="fas fa-headphones-alt"></i></a></td> --}}
+                    <td>{{ChuDe}}</td>
+                    <td>{{{YNghia}}}</td>
+                    <td>{{ViDu}}</td>
+                    <td><img src="{{FileHinhAnh}}" alt="" class="img-sm"></td>
+                    <td>
+                        <button class="btn mb-2" value="{{idTuVung}}" data-toggle="modal" data-target="#delModal"><i
+                                class="fas fa-minus-circle"></i></button>
+                        <a class="btn" href="/quanly/tuvung/chinhsua/{{idTuVung}}"><i class="fas fa-wrench"></i></a>
+
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="home d-flex justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="modal fade" id="Them-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="logoutModalLabel"><b>THÊM TỪ VỰNG</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formAdd" action="/quanly/themtv" method="post">
+                    <div class="form-group row ml-5">
+                        <div class="col-md-6">
+                            <input name="tentv" type="text" class="form-control border" placeholder="Tên từ vựng">
+                        </div>
+                        <div class="col-md-5">
+                            <input name="CachPhatAm" type="text" class="form-control border" placeholder="Cách phát âm">
+                        </div>
+                        <div class="col-md-6 mt-3">
+
+                            <select name="chude" class="form-control border col-md-12">
+
+                                <option value="">Loại chủ đề</option>
+                                {{#each this.chude}}
+                                <option value="{{idCDBaiHoc}}">{{TenBai}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-md-5 mt-3">
+                            <select name="LoaiTu" class="form-control border col-md-12">
+                                <option value="">Loại từ</option>
+                                <option value="Verb">Verb</option>
+                                <option value="Noun">Noun</option>
+                                <option value="Adjective">Adjective</option>
+                                <option value="Adverb">Adverb </option>
+                                <option value="Preposition">Preposition </option>
+                            </select>
+                        </div>
+                        <div class="col-md-11 mt-3">
+                            <input name="YNghia" type="text" class="form-control border" placeholder="Ý nghĩa">
+                        </div>
+                        <div class="col-md-11 mt-3">
+                            <textarea name="Vidu" class="form-control border" placeholder="Ví dụ"></textarea>
+                        </div>
+
+                        <div class="col-md-11 mt-3">
+                            Link âm thanh:
+                            <input name="fileAmThanh" type="text" class="form-control border"
+                                placeholder="Link âm thanh">
+                        </div>
+                        <div class="col-md-11 mt-3">
+                            Link hình ảnh:
+                            <input name="fileHinh" type="text" class="form-control border" placeholder="Link hình ảnh">
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 p-3 text-center">
+                        <button type="submit" class="btn btn-exit">Thêm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="POST" id="FormDelete">
+    <div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-black" id="delModalLabel"><b>XÓA BÀI</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn thật sự muốn xóa bài này?
+                </div>
+                <div class="col-md-12 p-3 text-center">
+                    <a href="javascript: $('#FormDelete').submit()" class="btn btn-danger">Đồng ý</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

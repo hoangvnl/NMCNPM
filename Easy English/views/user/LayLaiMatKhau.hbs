@@ -1,0 +1,73 @@
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script>
+    $(function () {
+
+        $('#GetNewForm').validate({
+            rules: {
+
+                NewPass: {
+                    required: true,
+                    minlength: 6
+                },
+                confirm: {
+                    required: true,
+                    equalTo: $('[name="NewPass"]')
+                }
+            },
+            messages: {
+
+                NewPass: {
+                    required: 'Yêu cầu nhập password.',
+                    minlength: 'Mật khẩu của bạn ít nhất 6 kí tự.'
+                },
+                confirm: {
+                    required: 'Nhập lại Password.',
+                    equalTo: 'Password không giống nhau.'
+                },
+            },
+
+            errorElement: 'small',
+            errorClass: 'col help-block text-danger',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
+
+        });
+    })
+</script>
+{{/section}}
+
+<form novalidate method="POST" id="GetNewForm">
+    <div style="padding-top:100px" class="container col-md-5 text-black">
+        <div class="shadow mb-5 bg-white rounded ">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="signinModalLabel"><b>NHẬP LẠI MẬT KHẨU MỚI</b></h5>
+            </div>
+            {{#if this.thaydoi}}
+            <label style="color:red">Thay đổi mật khẩu thành công.</label>
+            {{/if}}
+            {{#if this.thatBai}}
+            <label style="color: red">Thay đổi mật khẩu thất bại, vui lòng kiểm tra lại</label>
+            {{/if}}
+            <div class="modal-body ">
+                <div class="form-group row">
+                    <div class="col-md-12 mt-5">
+                        <input type="password" name="NewPass" class="form-control border" placeholder="Nhập mật khẩu">
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <input type="password" name="confirm" class="form-control border" placeholder="Nhập mật khẩu">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center ">
+                <div class="col-md-10 mb-3">
+                    <button type="submit" class="btn btn-block btn-primary text-white py-3 px-5">Thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

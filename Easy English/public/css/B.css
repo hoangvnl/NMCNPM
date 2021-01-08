@@ -1,0 +1,32 @@
+.item-content {
+  border-bottom: 1px solid #eee;
+}
+
+audio {
+  width: 10%;
+  height: 30px;
+}
+
+.span-audio {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.btn-audio {
+  display: block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  color: #4b7d1c;
+  text-align: center;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

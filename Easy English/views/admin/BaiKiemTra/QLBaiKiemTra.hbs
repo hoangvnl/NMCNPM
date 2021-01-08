@@ -1,0 +1,228 @@
+{{#section 'css'}}
+{{/section}}
+
+{{#section 'js'}}
+<script>
+    $("button").click(function () {
+        var a = $(this).val();
+        $('#FormDelete').attr('action', '/admin/baikiemtra/delete/' + a);
+    })
+    $('#select').on('change', function () {
+        $('#formcate').submit();
+    });
+</script>
+{{/section}}
+
+<div class="mt-3 ml-3 mr-3 ">
+    <div class="title text-black">
+        <h2><b>Quản lý Bài kiểm tra</b></h2>
+    </div>
+    <hr>
+    <div class="col-md-12 ml-5 mt-3 d-flex flex-nowrap">
+        <form id="formcate" method="POST" action="/admin/baikiemtra/LocBaiKT">
+            <div class="col-md- d-flex flex-nowrap">
+                <label for="">Lọc theo loại: &nbsp; </label>
+                <select name="select" id="select" style="width:300px" class="form-control border">
+                    <option>Loại bài kiểm tra</option>
+                    {{#each this.Loai}}
+                    <option {{#if isSelected}} selected {{/if}} value="{{idLoaiBai}}">{{TenLoaiBai}}</option>
+                    {{/each}}
+                </select> &nbsp;
+
+            </div>
+        </form>
+
+        <div class="col-md-4 d-flex justify-content-start">
+            <a id="btnThem" href="/admin/baikiemtra/addKT" class="btn">
+                <i class="fas fa-plus-circle"></i> Thêm bài</a>
+        </div>
+    </div>
+    <div class="col-md-12 mt-3">
+        <table class="table table-hover table-dark word-table datatable" id="myTable">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Tên bài kiểm tra <i class="fas fa-sort"></i></td>
+                    <td>Loại bài</td>
+                    <td>Ngày đăng <i class="fas fa-sort"></i></td>
+                    <td>Hành động</td>
+                </tr>
+
+            </thead>
+            <tbody>
+                {{#each this.ListKT}}
+                <tr>
+                    <td>{{a}}</td>
+                    <td>{{TieuDe}}</td>
+                    <td>{{TenLoaiBai}}</td>
+                    <td>{{format NgayDang}}</td>
+                    <td>
+                        <button class="btn" value="{{idBaiTest}}" data-toggle="modal" data-target="#delModal"><i
+                                class="fas fa-minus-circle"></i></button>
+                        <a class="btn" href="/admin/baikiemtra/editbaikt/{{idBaiTest}}"><i class="far fa-eye"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+{{!-- <div class="modal fade" id="Them-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="logoutModalLabel"><b>THÊM BÀI KIỂM TRA</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="GET">
+                    <div class="form-group row ml-5">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control border" placeholder="Tên bài học">
+                        </div>
+
+                        <div class="col-md-4">
+                            <select class="form-control border col-md-7">
+                                <option>Loại bài</option>
+                                <option>Cơ bản (Basic)</option>
+                                <option>Nâng cao (Advanced)</option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-11 mt-3">
+                            File Nội dung:
+                            <input type="file" class="form-control border">
+                        </div>
+                        <div class="col-md-11 mt-3">
+                            Hoặc <a href="">Viết bài tại đây</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12 p-3 text-center">
+                <button class="btn">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<form action="/ThemLoai" method="POST">
+    <div class="modal fade" id="ThemCat-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-black" id="logoutModalLabel"><b>THÊM LOẠI BÀI</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="GET">
+                        <div class="form-group row ">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control border" placeholder="Tên loại bài">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12 p-3 text-center">
+                    <button type="submit" class="btn ">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<form method="POST" id="FormDelete">
+    <div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-black" id="delModalLabel"><b>XÓA BÀI</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn thật sự muốn xóa bài này?
+                </div>
+                <div class="col-md-12 p-3 text-center">
+                    <a href="javascript: $('#FormDelete').submit()" class="btn btn-danger">Đồng ý</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="modal fade" id="inforModal" tabindex="-1" role="dialog" aria-labelledby="infor-ModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black" id="infor-ModalLabel"><b>THÔNG TIN CHI TIẾT</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <form action="#" method="GET" class="d-flex justify-content-center">
+                        <div class="col-md-12 d-flex flex-nowrap">
+                            <div class="col-md-2 text-center">
+                                <img class="avatar-user"
+                                    src="https://i.pinimg.com/originals/df/a6/d8/dfa6d8c83adc19313ae2e265ad851a3a.jpg"
+                                    alt="">
+                                <button class="btn btn-circle text-center ml-5 mt-2"><i class="fas fa-tools"></i>
+                                    Đổi</button>
+                            </div>
+                            <div class="row col-md-10 body-modal">
+                                <div class="col-md-12 disable">
+                                    Họ và tên:
+                                    <input type="text" class="form-control border" value="Nguyễn Thị Việt An">
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    Ngày sinh
+                                    <input type="date" class="form-control border" value="03/03/1998">
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    Email:
+                                    <input type="text" class="form-control border" value="anh.vy98@gmail.com">
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    Mật khẩu:
+                                    <input type="password" class="form-control border" value="ntva3598">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 p-3 text-center">
+                <button class="btn btn-fix">Chỉnh sửa</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+{{#section 'js'}}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script
+    src="https://cdn.tiny.cloud/1/c3n6lu13jap2ehdz800xbmrmucezhjkqbjyfs2ps60jbgn4z/tinymce/5/tinymce.min.js"></script>
+<script>
+    $(function () {
+        tinymce.init({
+            selector: '#txtEditor',
+            height: 400,
+            menubar: false,
+            plugins: 'paste image link autolink lists checklist table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+                'forecolor backcolor',
+                'table link image media', 'checklist'
+            ]
+        });
+    })
+    $(function () {
+        tinymce.init({
+            selector: '#txtDapAn',
+            height: 300,
+            menubar: false,
+            plugins: 'paste image link autolink lists checklist table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+                'forecolor backcolor',
+                'table link image media', 'checklist'
+            ]
+        });
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#date').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+            mask: true,
+        });
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#suahinh").click(function () {
+            $("#abcd").hide();
+            $("#dcba").show();
+        });
+    }); 
+</script>
+{{/section}}
+<div class="m-3 bg-gray rounded text-black">
+    <div>
+        <h1 class="modal-title text-black col-md-11" id="logoutModalLabel"><b>Chi Tiết Bài Kiểm Tra</b></h1>
+    </div>
+    <hr>
+</div>
+<div class="shadow-lg m-4 p-2">
+    <form id="formEdit" method="POST">
+        <div>
+            <div class="form-group row mt-3">
+                <div class="col-md-6 d-flex flex-nowrap  justify-content-center">
+                    <div class="col-md-3">
+                        <label>Loại bài</label>
+                    </div>
+                    <select name="Loai" style="height: 40px " class="col-md-6 ml-2 form-control border">
+                        {{#each this.LoaiBai}}
+                        <option {{#if isselect}} selected {{/if}} value="{{idLoaiBai}}">{{TenLoaiBai}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                {{#each detail}}
+                <div class="col-md-4 d-flex flex-nowrap">
+                    <label>Ngày đăng: </label>
+                    <input class="col-md-8 form-control border" name="date" type="text" id="date"
+                        value="{{format NgayDang}}">
+                </div>
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <div class="col-md-2">
+                    <label>Tiêu đề</labe>
+                </div>
+                <div class="col-md-9">
+                    <input name="TieuDe" type="text" id="tieuDe" class="form-control border" value="{{TieuDe}}">
+                </div>
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <div class="col-md-2">
+                    <label>Đáp án</labe>
+                </div>
+                <div class="col-md-9">
+                    <textarea id="txtDapAn" class="form-control border" name="DapAn" id="txtSummary"
+                        rows="5">{{{DapAn}}}</textarea>
+                </div>
+            </div>
+
+            <div class="col-md-11 mt-3">
+                <div class="col-md-2 ml-3 text-center">
+                    <label>Nội dung</labe>
+                </div>
+                <div class="ml-5">
+                    <textarea class="form-control border" name="NoiDung" id="txtEditor"
+                        rows="10">{{{NoiDung}}}</textarea>
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="col-md-11 ml-5 mb-5 mt-5" style="margin-top:20px; display:flex; justify-content:space-between">
+            <a class="btn btna" href="/admin/baikiemtra" id="Quaylai"><i class="fa fa-backward"
+                    aria-hidden="true">&nbsp;</i>Quay lại</a>
+            <button class="btn btna btn-primary" type="submit" id="Them">
+                <i class="fa fa-check" aria-hidden="true">&nbsp;</i>Lưu lại</button>
+        </div>
+</div>
+
+</div>
+</form>
+</div>

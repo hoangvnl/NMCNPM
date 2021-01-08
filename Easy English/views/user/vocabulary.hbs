@@ -1,0 +1,152 @@
+{{#section 'js'}}
+<script>
+    function playAudio() {
+        var a = document.getElementById('myAudio');
+        a.play();
+    }
+</script>
+<script src="//code.responsivevoice.org/responsivevoice.js?key=potlPNIr"></script>
+{{/section}}
+
+<section class="site-section">
+    <div class="w3-sidebar" style="top: 0px;">
+        <div class="w3-bar-block" id="leftmenuinner">
+            <div class="w3-container text-center">
+                <h3>CHỦ ĐỀ</h3>
+            </div>
+            {{#each Chude}}
+            <div class="w3-collapse w3-bar-item">
+                <a class="{{#if isSelected}}active{{/if}}" href="/{{LoaiBai}}/{{idCDBaiHoc}}">{{TenBai}}</a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{#if isAuthenticated}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto blog-content ">
+                <div class="shadow pt-3 bg-white rounded">
+                    {{#each Tuvung}}
+                    <div class="item-content col-md-12 d-flex flex-nowrap" style="font-size: 14px;">
+                        <span class="col-md-2">
+                            <img style="width: 150px; height: 100px; border: 1px solid #eee;" src="{{FileHinhAnh}}">
+                        </span>
+                        <div class="pl-5">
+                            <b style="color: #337ab7;">{{TenTuVung}}</b>
+                            ({{LoaiTu}})
+                            :
+                            <i>{{{YNghia}}}</i>
+
+                            <br>
+                            <b>Ex:</b> {{{ViDu}}}
+                        </div>
+                    </div>
+                    <hr>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mx-auto blog-content">
+        <div class="comment-form-wrap shadow mt-5 col-12 pt-3">
+            <h3 class="text-black"><b>Bình Luận</b></h3>
+            <hr>
+            <div class="row pt-3 col-md-12">
+                <ul class="comment-list">
+                    {{#each CommentBH}}
+                    <li class="comment d-flex flex-nowrap" style="width:800px">
+                        <div class="mr-3 p-3">
+                            <img style="width: 50px; height:50px"
+                                src="https://cdn.designbyhumans.com/product_images/p/898810.f56.f949aS7ay1Cm2MjUAAA-650x650-b-p.jpg"
+                                alt="">
+                        </div>
+                        <div class="comment-body">
+                            <h3><b>{{hoten}}</b></h3>
+                            <div class="meta">{{format NgayDang}}</div>
+                            <p>{{NoiDung}}</p>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <hr>
+            <form method="POST" class="p-3 bg-light">
+                <div class="d-flex flex-nowrap">
+                    <div class="mr-3 pt-5">
+                        <img style="width: 100px; height:100px"
+                            src="https://cdn.designbyhumans.com/product_images/p/818332.f56.b5340S7ay1Cm2MjUAAA-650x650-b-p.jpg"
+                            alt="">
+                    </div>
+                    <div class="form-group col-md-10">
+                        <label for="message">Nhập ở đây</label>
+                        <textarea name="comment" id="message" cols="30" rows="5" class="form-control border"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-left:600px">
+                    <button type="submit" class="btn btn-primary py-3 px-5">Gửi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{else}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto blog-content">
+                <h2 class="text-black">Bạn chưa đăng nhập!</h2>
+                <p>Bạn cần phải đăng nhập để có thể xem được bài học.</p>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</section>
+
+<footer class="site-footer footer-edit">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 text-center">
+
+                <div class="mb-5">
+                    <h2 class="footer-heading mb-4 text-center">Subscribe để nhận được thông báo từ chúng tôi</h2>
+                    <form action="#" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control border-secondary text-black bg-transparent"
+                                placeholder="Nhập Email của bạn" aria-label="Nhập Email của bạn"
+                                aria-describedby="button-addon2" style="margin-left: 20px;">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary text-white" type="button"
+                                    id="button-addon2">Subscribe</button>
+                            </div>
+                        </div>
+                </div>
+
+
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
+                </form>
+            </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+                <div class="border-top pt-5">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made
+                        with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

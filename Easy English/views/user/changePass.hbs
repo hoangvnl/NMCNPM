@@ -1,0 +1,91 @@
+
+
+
+{{#section 'js'}}
+<script src="myscripts.js"></script>
+<script>
+    $(function () {
+        $('#formEditMatKhau').validate({
+            rules: {
+                oldPass: {
+                    required: true
+                    
+                },
+                newPass: {
+                    required: true,
+                    minlenght: 6
+                },
+                RenewPass: {
+                    required: true,
+                    equalTo: $('[name="newPass"]')
+                }
+            },
+            messages: {
+                oldPass: {
+                    required: 'Nhập chính xác mật khẩu'
+                },
+                newPass: {
+                    required: 'Nhập chính xác mật khẩu',
+                    minlength: 'Yêu cầu mật khẩu >6 kí tự'
+                },
+                RenewPass: {
+                    required: 'Nhập chính xác mật khẩu',
+                    equalTo: 'Mật khẩu không khớp nhau'
+                }
+            },
+            errorElement: 'small',
+            errorClass: 'col help-block text-danger',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
+        })
+    })
+</script>
+{{/section}}
+
+
+{{#if isAuthenticated}}
+<form method="POST" id="formEditMatKhau" action="/changePass">
+    <div class="container col-md-5 mt-3 text-black">
+        <div class="shadow mb-5 bg-white rounded ">
+            <div class="modal-header">
+                <h5 class="modal-title text-black"><b>Đổi mật khẩu</b></h5>
+            </div>
+            <div class="modal-body p-5">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label>Nhập mật khẩu cũ</label>
+                        <input type="password" name="oldPass" class="form-control border">
+                    </div>
+                    <hr>
+                    <div class="col-md-12 mt-5">
+                        <label>Nhập mật khẩu mới</label>
+                        <input type="password" name="newPass" class="form-control border">
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <label>Nhập lại mật khẩu mới</label>
+                        <input type="password" name="RenewPass" class="form-control border">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center ">
+                <div class="col-md-10 mb-3">
+                    <button type="submit" class="btn btn-block btn-primary text-white py-3 px-5">Lưu lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{{else}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto blog-content">
+            <h2 class="text-black">Bạn chưa đăng nhập!</h2>
+            <p>Bạn cần phải đăng nhập để có thể xem được phần này.</p>
+        </div>
+    </div>
+</div>
+{{/if}}

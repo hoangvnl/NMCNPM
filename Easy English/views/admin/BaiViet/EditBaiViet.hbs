@@ -1,0 +1,125 @@
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+{{#section 'js'}}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script
+    src="https://cdn.tiny.cloud/1/c3n6lu13jap2ehdz800xbmrmucezhjkqbjyfs2ps60jbgn4z/tinymce/5/tinymce.min.js"></script>
+<script>
+    $(function () {
+        tinymce.init({
+            selector: '#txtEditor',
+            height: 400,
+            menubar: false,
+            plugins: 'paste image link autolink lists checklist table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+                'forecolor backcolor',
+                'table link image media', 'checklist'
+            ]
+        });
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#date').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+            mask: true,
+        });
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#suahinh").click(function () {
+            $("#abcd").hide();
+            $("#dcba").show();
+        });
+    }); 
+</script>
+{{/section}}
+<div class="m-3 bg-gray rounded text-black">
+    <div>
+        <h1 class="modal-title text-black col-md-11" id="logoutModalLabel"><b>Chỉnh Sửa Bài Viết</b></h1>
+    </div>
+    <hr>
+</div>
+<div class="shadow-lg m-4 p-2">
+    <form id="formEdit" method="POST">
+        <div>
+            <div class="form-group row mt-3">
+                <div class="col-md-12 d-flex flex-nowrap justify-content-center">
+                    {{#each detail}}
+
+                    <div class="col-md-4">
+                        <label>Tác giả: </label>
+                        <input class="col-md-9" readonly name="tacGia" type="text" id="tenTacGia"
+                            class="form-control border" value="{{hoten}}" style="border:none">
+                    </div>
+                    <div class="col-md-4 d-flex flex-nowrap">
+                        <label>Ngày đăng: </label>
+                        <input class="col-md-8 form-control border" name="date" type="text" id="date"
+                            value="{{format NgayDang}}">
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                    <div class="col-md-1">
+                        <label>Tiêu đề</labe>
+                    </div>
+                    <div class="col-md-9">
+                        <input name="TieuDe" type="text" id="tieuDe" class="form-control border" value="{{TieuDe}}">
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                    <div class="col-md-1">
+                        <label>Tóm tắt</labe>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea class="form-control border" name="TomTat" id="txtSummary"
+                            rows="5">{{{NoiDungTomTat}}}</textarea>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                    <div class="col-md-1">
+                        <label>Hình ảnh</labe>
+                    </div>
+                    <div class="col-md-9">
+                        <div style="display: block" id="abcd">
+                            <img stype="width:100px; height:400px" src="{{AnhDaiDien}}"><br>
+                            <a class="btn mt-3 mb-3 text-white" style="margin-left:200px" id="suahinh">Sửa hình</a>
+                        </div>
+                        <div style="display:none" id="dcba">
+                            <input class="form-control border" name="img" id="txtLinkimg" type="text"
+                                value="{{AnhDaiDien}}"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-11 mt-3">
+                    <div class="col-md-3 ml-3 text-center">
+                        <label>Nội dung</labe>
+                    </div>
+                    <div class="ml-5">
+                        <textarea class="form-control border" name="NoiDung" id="txtEditor"
+                            rows="10">{{{NoiDung}}}</textarea>
+                    </div>
+
+                </div>
+                {{/each}}
+            </div>
+
+            <div  class="col-md-11 ml-5" style="margin-top:20px; display:flex; justify-content:space-between">
+                <a class="btn btna" href="/admin/baiviet"
+                     id="Quaylai"><i class="fa fa-backward" aria-hidden="true">&nbsp;</i>Quay lại</a>
+                <button class="btn btna btn-primary"
+                    type="submit"
+                    id="Them">
+                    <i class="fa fa-check" aria-hidden="true">&nbsp;</i>Lưu lại</button>
+            </div>
+        </div>
+    </form>
+</div>

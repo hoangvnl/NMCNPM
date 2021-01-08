@@ -1,0 +1,151 @@
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+
+
+{{#section 'js'}}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script>
+    $(function () {
+        $('#txtdate').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+            mask: true,
+        });
+    })
+</script>
+
+<script>
+    $(function () {
+        $('#formEditMatKhau').validate({
+            rules: {
+                oldPass: {
+                    required: true,
+                    remote: {
+                        url: '/checkPass'
+                    }
+
+                },
+                newPass: {
+                    required: true,
+                    minlength: 6
+                },
+                RenewPass: {
+                    required: true,
+                    equalTo: $('[name="newPass"]')
+                }
+            },
+            messages: {
+                oldPass: {
+                    required: 'Nhập chính xác mật khẩu',
+                    remote: 'Sai mật khẩu cũ'
+                },
+                newPass: {
+                    required: 'Nhập chính xác mật khẩu',
+                    minlength: 'Yêu cầu mật khẩu >6 kí tự'
+                },
+                RenewPass: {
+                    required: 'Nhập chính xác mật khẩu',
+                    equalTo: 'Mật khẩu không khớp nhau'
+                }
+            },
+            errorElement: 'small',
+            errorClass: 'col help-block text-danger',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
+        })
+    })
+</script>
+
+{{/section}}
+
+<form method="POST" action="/admin/profile">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-black" id="infor-ModalLabel"><b>THÔNG TIN CHI TIẾT</b></h5>
+
+        </div>
+        <div class="modal-body">
+            <div class="col-md-12">
+                <div class="col-md-12 d-flex flex-nowrap">
+                    <div class="col-md-2 text-center">
+                        <img class="avatar-user"
+                            src="https://i.pinimg.com/originals/df/a6/d8/dfa6d8c83adc19313ae2e265ad851a3a.jpg" alt="">
+
+                    </div>
+                    <div class="row col-md-10 body-modal">
+                        <div class="col-md-12 disable">
+                            Họ và tên:
+                            <input type="text" name="HoTen" class="form-control border" value="{{authUser.hoten}}">
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            Ngày sinh
+                            <input id="txtdate" type="text" name="Date" class="form-control border"
+                                value="{{format authUser.ngaysinh}}">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            Email:
+                            <input readonly name="email" type="text" class="form-control border"
+                                value="{{authUser.email}}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12 p-3 text-center">
+            <button type="submit" style="width:150px" class="btn btn-fix">Lưu lại</button>
+            <a class="dropdown-item" data-toggle="modal" data-target="#PassModal">
+                <i class="fas fa-exchange-alt"></i>
+                Đổi mật khẩu
+            </a>
+        </div>
+
+    </div>
+</form>
+
+<form method="POST" id="formEditMatKhau" action="/changePass">
+    <div class="modal fade" id="PassModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-black" id="infoModalLabel"><b>THAY ĐỔI MẬT KHẨU</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label>Nhập mật khẩu cũ</label>
+                            <input type="password" name="oldPass" class="form-control border">
+                        </div>
+                        <hr>
+                        <div class="col-md-12 mt-5">
+                            <label>Nhập mật khẩu mới</label>
+                            <input type="password" name="newPass" class="form-control border">
+                        </div>
+                        <div class="col-md-12 mt-5">
+                            <label>Nhập lại mật khẩu mới</label>
+                            <input type="password" name="RenewPass" class="form-control border">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-md-9">
+                        <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Thay đổi">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

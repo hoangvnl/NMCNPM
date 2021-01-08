@@ -1,0 +1,64 @@
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+
+
+{{#section 'js'}}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script>
+    $(function () {
+        $('#date').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+            mask: true,
+        });
+    })
+</script>
+<script>
+    $(function () {
+        $('#datex').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+            mask: true,
+        });
+    })
+</script>
+
+{{/section}}
+<form method="POST">
+    <div>
+        <div class=" m-5 shadow p-3 bg-gray rounded text-black">
+            <h1><b>Chỉnh sửa tài khoản</b></h1>
+            <hr>
+            <div class="col-md-12 mt-4 d-flex justify-content-center">
+                <label class="col-md-2 ">Họ Tên:</label>
+                <input class="col-md-5 form-control border form-control border" placeholder="Nhập họ tên" name="ten" type="text" value="{{this.member.hoten}}">
+            </div>
+            <div class="col-md-12 mt-3 d-flex justify-content-center">
+                <label class="col-md-2">Email:</label>
+                <input class="col-md-5 form-control border" type="text"  name="email" value="{{this.member.email}}">
+            </div>
+            <div class="col-md-12 mt-3 d-flex justify-content-center">
+                <label class="col-md-2">Ngày sinh:</label>
+                <input class="col-md-5 form-control border" type="text" id="date" name="date" value=" {{format this.member.ngaysinh}}">
+            </div>
+            <div class="col-md-12 mt-3 d-flex justify-content-center">
+                <label class="col-md-2">Ngày đăng kí:</label>
+                <input class="col-md-5 form-control border" type="text" id="datex" name="registerDay" value=" {{format this.member.NgayTaoTK}}">
+            </div>
+
+            <div  class="col-md-11 ml-5" style="margin-top:20px; display:flex; justify-content:space-between">
+                <a class="btn btna" href="/admin/taikhoan"
+                     id="Quaylai"><i class="fa fa-backward" aria-hidden="true">&nbsp;</i>Quay lại</a>
+                <button class="btn btna btn-primary"
+                 type="submit"
+                    id="Them">
+                    <i class="fa fa-check" aria-hidden="true">&nbsp;</i>Lưu lại</button>
+            </div>
+        </div>
+
+    </div>
+</form>

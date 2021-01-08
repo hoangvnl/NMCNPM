@@ -1,0 +1,522 @@
+{{#section 'js'}}
+<script>
+    $(document).ready(function () {
+        $("#start").click(function () {
+            $("#test").show();
+            $("#info").hide();
+        });
+    }); 
+</script>
+{{/section}}
+
+<div class="container" id="info">
+    <div class="col-12 mt-5 p-5 shadow">
+        <h2 class="text-black">Kiểm tra trình độ tiếng anh của bạn</h2>
+        <p>Đây là một bài kiểm tra nhanh online sẽ giúp bạn xác định được khả năng hiện tại của bản thân, từ đó xấc
+            định cho mình mức độ thích hợp để bắt đầu.</p>
+        <p>Hãy nhấp vào nút "Bắt đầu" để thực hiện làm bài.</p>
+        <p>Cụ thể:</p>
+        <ul>
+            <li>Bạn sẽ phải làm tổng cộng 20 câu trắc nghiệm và 2 câu Listening</li>
+            <li>Không giới hạn thời gian.</li>
+            <li>Kiểm tra đáp án ở cuối bài.</li>
+        </ul>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <button class="btn" id="start"><a class="text-white" >Bắt đầu</a></button>
+    </div>
+</div>
+<div class="container" id="test" style="display:none">
+    <div class="col-12 mt-5">
+        <h2 class="text-black text-center">Bài Kiểm Tra</h2>
+        <div class="shadow col-12 p-5 text-black">
+            <form>
+                <div>
+                    <label> <b>Part I: <br></b>
+                        <b>Section 1: (Questions 1 – 10)<i>Choose the correct answer (A, B, C or D) for each
+                                sentence.</i></b></label>
+                </div>
+                <div class="ml-3">
+                    <div>
+                        <label><b>1. </b>Tom doesn't like dancing, but Mike_________________</label><br>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            does
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input ml-5" type="radio" name="Adoes" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            do
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            did
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            doesn't
+                        </label>
+                    </div>
+
+                    <!---------------------------------->
+
+                    <div>
+
+                        <label><b>2. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes2" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes2" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes2" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes2" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>3. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes3" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes3" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes3" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes3" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>4. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes4" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes4" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes4" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes4" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>5. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes5" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes5" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes5" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes5" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>6. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes6" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes6" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes6" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes6" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>7. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes7" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes7" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes7" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes7" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>8. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes8" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes8" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes8" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes8" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>9. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes9" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes9" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes9" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes9" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>10. </b>Ba ____________ a shower every day.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes10" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            have
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes10" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            take
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes10" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            had
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes10" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            takes
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <!-------------------------->
+
+            <form>
+                <div>
+                    <label> <b>Part 2: <br></b>
+                        <b>Listening: (Questions 10 – 15)<i>Choose the correct answer (A, B, C or D) for each
+                                sentence.</i></b></label>
+
+                </div>
+                <div class="ml-3">
+                    <div>
+                        <audio controls>
+                            <source
+                                src="https://s3-ap-southeast-1.amazonaws.com/x3english.com/20161107/2.+Try+to+Sleep.mp3"
+                                type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <div>
+                        <label><b>1. </b>What time did Norma go to bed?</label><br>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes1" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            11 o'clock
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input ml-5" type="radio" name="Adoes1" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            12 o'clock
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes1" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            11:15
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes1" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            12:45
+                        </label>
+                    </div>
+
+                    <!---------------------------------->
+
+                    <div>
+
+                        <label><b>2. </b>Could she sleep?.</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes11" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            No, she couldn't
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes11" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            Yes, she could
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes11" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            No, she can
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes11" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            No information
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>3. </b>What did she do after that?</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes12" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            She felt asleep
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes12" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            She lay on her bed
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes12" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            She read a book
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes12" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            She threw a book
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>4. </b>How was the book?</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes13" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            It's bad
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes13" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            It's beautiful
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes13" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            It's good
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes13" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            It's normal
+                        </label>
+                    </div>
+                    <!---------------------------------->
+                    <div>
+                        <label><b>5. </b>After a while, what did she feel?</label><br>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Adoes14" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            She felt nothing
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes14" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            she felt sleepy
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes14" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            She kept reading the book
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ml-5">
+                        <input class="form-check-input" type="radio" name="Adoes14" id="Adoes" value="does">
+                        <label class="form-check-label" for="Adoes">
+                            All true
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-12 text-center mt-5">
+        <button class="btn">Chấm điểm</button>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
+            </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+                <div class="border-top pt-5">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made
+                        with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

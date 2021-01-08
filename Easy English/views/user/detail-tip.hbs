@@ -1,0 +1,119 @@
+{{#each Chitiet}}
+<div class="site-section-cover overlay inner-page bg-light" style="background-image: url('{{AnhDaiDien}}')"
+    data-aos="fade">
+
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-lg-10">
+
+                <div class="box-shadow-content">
+                    <div class="block-heading-1">
+                        <span class="d-block mb-3" data-aos="fade-up">{{format NgayDang}} <span
+                                class="mx-2">&bullet;</span>
+                            by {{hoten}}</span>
+                        <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{TieuDe}}
+                        </h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<section class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 shadow p-5">
+                <p class="lead">{{{NoiDungTomTat}}}</p>
+                <p>{{{NoiDung}}}</p>
+                {{/each}}
+            </div>
+            <div class="col-md-3">
+                <div class="sidebar-box shadow">
+                    <h3>Bài viết liên quan</h3>
+                    {{#each lienquan}}
+                    <hr>
+                    <a href="{{idTips}}"><img src="{{AnhDaiDien}}" alt="Image placeholder" class="img-fluid mb-4"></a>
+
+                    <h2 class="text-black text-center"><a href="{{idTips}}">{{TieuDe}}</a>
+                    </h2>
+                    {{!-- <p>{{NoiDungTomTat}}</p> --}}
+                    <p><a href="{{idTips}}" class="">Read More...</a></p>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="comment-form-wrap shadow mt-5 col-9 pt-3">
+            <h3 class="text-black"><b>Bình Luận</b></h3>
+            <hr>
+            <div class="row pt-3 col-md-12">
+                <ul class="comment-list">
+                    {{#each CommentBV}}
+                    <li class="comment d-flex flex-nowrap"  style="width:800px">
+                        <div class="mr-3 p-3">
+                            <img style="width: 50px; height:50px"
+                                src="https://cdn.designbyhumans.com/product_images/p/898810.f56.f949aS7ay1Cm2MjUAAA-650x650-b-p.jpg"
+                                alt="">
+                        </div>
+                        <div class="comment-body">
+                            <h3><b>{{hoten}}</b></h3>
+                            <div class="meta">{{format NgayDang}}</div>
+                            <p>{{NoiDung}}</p>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <hr>
+           <form method="POST" class="p-3 bg-light">
+                <div class="d-flex flex-nowrap">
+                    <div class="mr-3 pt-5">
+                        <img style="width: 100px; height:100px"
+                            src="https://cdn.designbyhumans.com/product_images/p/818332.f56.b5340S7ay1Cm2MjUAAA-650x650-b-p.jpg"
+                            alt="">
+                    </div>
+                    <div class="form-group col-md-10">
+                        <label for="message">Nhập ở đây</label>
+                        <textarea name="comment" id="message" cols="30" rows="5" class="form-control border"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-left:600px">
+                    <button type="submit" class="btn btn-primary py-3 px-5">Gửi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
+            </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+                <div class="border-top pt-5">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made
+                        with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

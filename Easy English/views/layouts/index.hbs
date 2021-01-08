@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>EASYENGLISH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/jquery-ui.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="/css/aos.css">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/css/A.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+
+  {{{_sections.css}}}
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="btn-arrow-top">
+    <a href="#home-section"><button class="btn btn-round"><i class="fas fa-angle-double-up"></i></button></a>
+  </div>
+
+  <div class="site-wrap" id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <div id="sticky-wrapper" class="sticky-wrapper" style="height: 74px">
+      <header class="site-navbar js-sticky-header site-navbar-target shadow-sm" role="banner">
+        <div class="container">
+          <div class="row align-items-center">
+
+            <div class="site-logo">
+              <a href="/trangchu" class="text-black"><span class="text-primary">Easy English</a>
+            </div>
+
+            <div class="col-11">
+              <nav class="site-navigation text-center" role="navigation">
+                <ul class="site-menu has-children js-clone-nav ml-auto d-none d-lg-block">
+                  <li>
+                    {{#each MucHoc}}
+                    <a href="/{{idLoaiBai}}"
+                      class="nav-link {{#if isActive}} active {{/if}} {{#if isDropdown}} dropdown-toggle {{/if}}" {{#if
+                      isDropdown}}id="dropdownMenuLink" data-toggle="dropdown" {{/if}}>
+                      {{TenLoaiBai}}
+                    </a>
+                    {{/each}}
+
+
+                  </li>
+
+                </ul>
+              </nav>
+            </div>
+
+            <div class="toggle-button d-flex flex-nowrap float-left">
+              <a href="" class="mr-3" role="button" id="dropdownMenuLink" data-toggle="dropdown"><i
+                  class="fas fa-search"></i></a>
+              <input class="form-control abc pl-3 dropdown-menu" aria-labelledby="dropdownMenuLink" type="search"
+                placeholder="Search" aria-label="Search">
+              {{#if isAuthenticated}}
+              <form id="frmSignout" action="/logout" method="POST">
+                <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false" id="navbarDropdown"><i class="fas fa-user"></i>&nbsp;
+                  <b>{{authUser.hoten}}</b>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#infoModal">
+                    <i class="fas fa-id-card"></i>
+                    Profile
+                  </a>
+
+                  {{#if isAdmin}}
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/admin">
+                    <i class="fas fa-id-card"></i>
+                    Quản lí website
+                  </a>
+                  {{/if}}
+                  <div class="dropdown-divider"></div>
+
+                  <a class="dropdown-item" href="/quanly/tuvung">
+                    <i class="fas fa-list-alt"></i>
+                    Quản lý từ vựng
+                  </a>
+                  <div class="dropdown-divider"></div>
+
+                  <a class="dropdown-item" data-toggle="modal" data-target="#PassModal">
+                    <i class="fas fa-exchange-alt"></i>
+                    Đổi mật khẩu
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
+                    <i class="fas fa-sign-out-alt"></i></i>
+                    Đăng xuất
+                  </a>
+                </div>
+              </form>
+              {{else}}
+              <a href="/login" class="btn btn-primary">Đăng nhập</a>
+              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">Đăng kí</a>
+              {{/if}}
+              <!-- <a href="#" class="site-menu-toggle p-5 js-menu-toggle text-black d-inline-block d-lg-none d-flex"><span class="icon-menu h3 m-0"></span></a> -->
+            </div>
+
+          </div>
+        </div>
+
+      </header>
+
+    </div>
+
+    <!-- hiệu ứng carousel -->
+    {{{body}}}
+
+
+  </div>
+
+
+  <form novalidate id="FormEmail" method="POST" action="/QuenMatKhau">
+    <div class="modal fade" id="ChangePass" style="margin:auto;width:500px" tabindex="-1" role="dialog"
+      aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-black" id="signinModalLabel"><b>Quên mật khẩu</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <label style="color: red">*Nhập email của bạn để lấy lại mật khẩu</label>
+          <div class="modal-body pt-1 pb-5">
+            <div class="form-group row">
+              <div class="col-md-12 mt-4">
+                <input type="text" name="email" class="form-control border" placeholder="Nhập Email">
+                <div class="col-md-6" style="color: rgb(252, 69, 69)">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-md-10">
+              <button type="submit" class="btn btn-block btn-primary text-white py-3 px-5"><a>Gửi</a></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <!-- Modal đăng ký -->
+  <form novalidatem method="POST" action="/register" id="registerForm">
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-black" id="signinModalLabel"><b>ĐĂNG KÝ</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-5">
+            <div class="form-group row">
+              <div class="col-md-6">
+                <input type="text" name="HoTen" class="form-control border" placeholder="Nhập họ tên">
+              </div>
+              <div class="col-md-6">
+                <input name="bdate" type="text" id="date" class="form-control border" placeholder="Nhập ngày sinh">
+              </div>
+              <div class="col-md-12 mt-4">
+                <input type="text" name="email" class="form-control border" placeholder="Nhập Email">
+                <div class="col-md-6" style="color: rgb(252, 69, 69)">
+
+                </div>
+              </div>
+              <div class="col-md-6 mt-4">
+                <input type="password" name="pass" class="form-control border" placeholder="Nhập mật khẩu">
+              </div>
+              <div class="col-md-6 mt-4">
+                <input type="password" name="confirm" class="form-control border" placeholder="Nhập lại mật khẩu">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-md-10">
+              <button type="submit" class="btn btn-block btn-primary text-white py-3 px-5"><a>Đăng
+                  ký</a></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {{!-- Modal chỉnh sửa thông tin --}}
+  <form action="/infor" method="POST">
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-black" id="infoModalLabel"><b>CHỈNH SỬA THÔNG TIN CÁ NHÂN</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div class="col-md-5">
+                  <label>Họ và tên:</label>
+                </div>
+                <div class="col-md-12">
+                  <input name="HoTen" type="text" class="form-control border" value="{{authUser.hoten}}">
+                </div>
+              </div>
+              <div class="col-md-12 mt-3">
+                <div class="col-md-5">
+                  <label>Ngày sinh:</label>
+                </div>
+                <div class="col-md-12">
+                  <input name="NgaySinh" id="dateUser" type="text" class="form-control border"
+                    value="{{format authUser.ngaysinh}}">
+                </div>
+              </div>
+              <div class="col-md-12 mt-3">
+                <div class="col-md-5">
+                  <label>Email:</label>
+                </div>
+                <div class="col-md-12">
+                  <input name="Email" type="text" readonly class="form-control border" value="{{authUser.email}}">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-md-9">
+              <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Chỉnh sửa">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {{!-- Modal chỉnh sửa pass --}}
+  <form method="POST" id="formEditMatKhau" action="/changePass">
+    <div class="modal fade" id="PassModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-black" id="infoModalLabel"><b>THAY ĐỔI MẬT KHẨU</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label>Nhập mật khẩu cũ</label>
+                <input type="password" name="oldPass" class="form-control border">
+              </div>
+              <hr>
+              <div class="col-md-12 mt-5">
+                <label>Nhập mật khẩu mới</label>
+                <input type="password" name="newPass" class="form-control border">
+              </div>
+              <div class="col-md-12 mt-5">
+                <label>Nhập lại mật khẩu mới</label>
+                <input type="password" name="RenewPass" class="form-control border">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <div class="col-md-9">
+              <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Thay đổi">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+
+
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/jquery-ui.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/jquery.sticky.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/jquery.animateNumber.min.js"></script>
+  <script src="/js/aos.js"></script>
+  <script src="/js/main.js"></script>
+  {{{_sections.js}}}
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+  <script>
+    $(function () {
+      $('#date').datetimepicker({
+        format: 'd/m/Y',
+        timepicker: false,
+        mask: true,
+      });
+    })
+  </script>
+
+
+  <script>
+    $(function () {
+      $('#dateUser').datetimepicker({
+        format: 'd/m/Y',
+        timepicker: false,
+        mask: true,
+      });
+    })
+  </script>
+
+
+  <script>
+    $(function () {
+      $('#registerForm').validate({
+        rules: {
+          HoTen: {
+            required: true
+          },
+          email: {
+            required: true,
+            email: true,
+            remote: {
+              url: '/isAvailable'
+            }
+          },
+          bdate: {
+            required: true
+          },
+          pass: {
+            required: true,
+            minlength: 6
+          },
+          confirm: {
+            required: true,
+            equalTo: $('[name="pass"]')
+          }
+        },
+        messages: {
+          HoTen: {
+            required: 'Nhập chính xác tên người dùng'
+          },
+          email: {
+            required: 'Nhập chính xác email người dùng',
+            email: 'Nhập chính xác email người dùng',
+            remote: 'Email đã tồn tại'
+          },
+          bdate: {
+            required: 'Nhập chính xác ngày tháng năm sinh'
+          },
+          pass: {
+            required: 'Nhập chính xác mật khẩu',
+            minlength: 'Yêu cầu mật khẩu >6 kí tự'
+          },
+          confirm: {
+            required: 'Nhập chính xác mật khẩu',
+            equalTo: 'Mật khẩu không khớp nhau'
+          }
+        },
+        errorElement: 'small',
+        errorClass: 'col help-block text-danger',
+        highlight: function (e) {
+          $(e).removeClass('is-valid').addClass('is-invalid');
+        },
+        unhighlight: function (e) {
+          $(e).removeClass('is-invalid').addClass('is-valid');
+        }
+      })
+    })
+  </script>
+
+
+  <script>
+    $(function () {
+      $('#formEditMatKhau').validate({
+        rules: {
+          oldPass: {
+            required: true,
+            remote: {
+              url: '/checkPass'
+            }
+
+          },
+          newPass: {
+            required: true,
+            minlength: 6
+          },
+          RenewPass: {
+            required: true,
+            equalTo: $('[name="newPass"]')
+          }
+        },
+        messages: {
+          oldPass: {
+            required: 'Nhập chính xác mật khẩu',
+            remote: 'Sai mật khẩu cũ'
+          },
+          newPass: {
+            required: 'Nhập chính xác mật khẩu',
+            minlength: 'Yêu cầu mật khẩu >6 kí tự'
+          },
+          RenewPass: {
+            required: 'Nhập chính xác mật khẩu',
+            equalTo: 'Mật khẩu không khớp nhau'
+          }
+        },
+        errorElement: 'small',
+        errorClass: 'col help-block text-danger',
+        highlight: function (e) {
+          $(e).removeClass('is-valid').addClass('is-invalid');
+        },
+        unhighlight: function (e) {
+          $(e).removeClass('is-invalid').addClass('is-valid');
+        }
+      })
+    })
+  </script>
+
+  <script>
+    $(function () {
+      $('#FormEmail').validate({
+        rules: {
+          email: {
+            required: true,
+          }
+        },
+        messages: {
+          email: {
+            required: 'Nhập chính xác email',
+          },
+        },
+        errorElement: 'small',
+        errorClass: 'col help-block text-danger',
+        highlight: function (e) {
+          $(e).removeClass('is-valid').addClass('is-invalid');
+        },
+        unhighlight: function (e) {
+          $(e).removeClass('is-invalid').addClass('is-valid');
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

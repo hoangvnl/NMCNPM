@@ -1,0 +1,80 @@
+<div class="site-section" id="press-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="block-heading-1">
+                    <span>BÀI VIẾT</span>
+                    <h2>CẨM NANG HỌC TIẾNG ANH</h2>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <ul class="list-unstyled">
+                    {{#each DSbaiviet}}
+                    <li class="mb-4  d-flex flex-fill">
+                        <a href="{{LoaiBai}}/{{idTips}}"><img class="imgs rounded" alt="Cẩm nang học tiếng Anh"
+                                src="{{AnhDaiDien}}">
+                        </a>
+                        <div class="col-9">
+                            <h2 class="h4"><a href="{{LoaiBai}}/{{idTips}}" class="text-black press-title">{{TieuDe}}</a></h2>
+                            <span class="d-block text-secondary">{{format NgayDang}}</span>
+                            <p>{{NoiDungTomTat}}</p>
+                        </div>
+                    </li>
+                    <hr>
+                    {{/each}}
+                    <!-- <hr> -->
+                </ul>
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <span class="page-link">Previous</span>
+                        </li>
+                        {{#each this.pages}}
+                         {{#if active}}
+                        <li class="page-item active" aria-current="page">
+                            <a href="javascript:;" class="page-link">
+                                {{value}}
+                            </a>
+                        </li>
+                        {{else}}
+                        <li class="page-item"><a class="page-link" href="?page={{value}}">{{value}}</a></li>
+                        {{/if}}
+                        {{/each}}
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
+            </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+                <div class="border-top pt-5">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made
+                        with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

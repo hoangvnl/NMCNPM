@@ -1,0 +1,66 @@
+<div class="col-9 mt-5" style="margin-left:15%;">
+    {{#each Loaibai}}
+    <h2 class="text-black text-center">{{TenLoaiBai}}</h2>
+    {{/each}}
+    <div class="shadow-sm col-12 pb-3">
+        {{#each DSbaitest}}
+        <div class="item-content">
+            <a href="{{LoaiBai}}/{{idBaiTest}}">
+                <h3><b>{{TieuDe}}</b></h3>
+            </a>
+            Ngày đăng: {{format NgayDang}}
+        </div>
+        <hr>
+        {{/each}}
+    </div>
+</div>
+{{!-- <nav aria-label="...">
+    <ul class="pagination justify-content-end mr-5">
+        <li class="page-item">
+            <span class="page-link">Previous</span>
+        </li>
+        {{#each this.pages}}
+        {{#if active}}
+        <li class="page-item active" aria-current="page">
+            <a href="javascript:;" class="page-link">
+                {{value}}
+            </a>
+        </li>
+        {{else}}
+        <li class="page-item"><a class="page-link" href="?page={{value}}">{{value}}</a></li>
+        {{/if}}
+        {{/each}}
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav> --}}
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
+            </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+                <div class="border-top pt-5">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made
+                        with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

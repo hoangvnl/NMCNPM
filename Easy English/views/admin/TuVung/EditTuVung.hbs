@@ -1,0 +1,147 @@
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+
+
+{{#section 'js'}}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+<script>
+    $(function () {
+        $('#formAdd').validate({
+            rules: {
+                tentv: {
+                    required: true
+                },
+                CachPhatAm: {
+                    required: true
+                },
+                chude: {
+                    required: true
+                },
+                LoaiTu: {
+                    required: true
+                },
+                YNghia: {
+                    required: true
+                },
+                Vidu: {
+                    required: true
+                },
+                fileAmThanh: {
+                    required: true
+                },
+                fileHinh: {
+                    required: true
+                }
+            },
+            messages: {
+                tentv: {
+                    required: 'Nhập chính xác từ vựng'
+                },
+                CachPhatAm: {
+                    required: 'Nhập chính xác cách phát âm'
+                },
+                chude: {
+                    required: 'Nhập chính xác chủ đề'
+                },
+                LoaiTu: {
+                    required: 'Nhập chính xác loại từ'
+                },
+                YNghia: {
+                    required: 'Nhập chính xác ý nghĩa'
+                },
+                Vidu: {
+                    required: 'Nhập chính xác ví dụ'
+                },
+                fileAmThanh: {
+                    required: 'Nhập chính xác link âm thanh'
+                },
+                fileHinh: {
+                    required: 'Nhập chính xác link hình ảnh'
+                }
+            },
+            errorElement: 'small',
+            errorClass: 'col help-block text-danger',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
+        })
+    })
+</script>
+
+{{/section}}
+
+<div>
+    <div class="m-3 bg-gray rounded text-black">
+        <h1><b>Chỉnh Sửa Từ Vựng</b></h1>
+    </div>
+    <div class="shadow-lg m-4 p-2">
+        <form id="formAdd" action="/admin/tuvung/chinhsua" method="POST">
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2 ">Từ vựng:</label>
+                <input readonly class="form-control border col-md-7" placeholder="Nhập từ vựng" name="tentv" type="text"
+                    value="{{this.tuvung.TenTuVung}}">
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2">Chủ đề:</label>
+                <select style="height: 40px" class=" form-control border col-md-7" name="chude" id="">
+                    <option value="">Chủ đề</option>
+                    {{#each this.chude}}
+                    <option {{#if isSelected}} selected {{/if}} value="{{idCDBaiHoc}}">{{TenBai}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2 ">Cách phát âm:</label>
+                <input class="col-md-7 form-control border" placeholder="Nhập cách phát âm" name="CachPhatAm"
+                    type="text" value="{{this.tuvung.PhienAm}}">
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2">Loại từ:</label>
+                <select style="height: 40px" class="col-md-7 form-control border" name="LoaiTu" id="">
+                    <option value="">Loại từ</option>
+                    <option value="Verb">Verb</option>
+                    <option value="Noun">Noun</option>
+                    <option value="Adjective">Adjective</option>
+                    <option value="Adverb">Adverb </option>
+                    <option value="Preposition">Preposition </option>
+                </select>
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2 ">Ý nghĩa:</label>
+                <textarea class="col-md-7 form-control border" placeholder="Ý nghĩa" name="YNghia" type="text"
+                    value="{{this.tuvung.YNghia}}">{{this.tuvung.YNghia}}</textarea>
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2 ">Link âm thanh:</label>
+                <input class="col-md-7 form-control border" placeholder="Link âm thanh" name="fileAmThanh" type="text"
+                    value="{{this.tuvung.FileAmThanh}}">
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2">Ví dụ:</label>
+                <textarea class="col-md-7 form-control border" type="text" placeholder="Ví dụ" name="Vidu"
+                    value="{{this.tuvung.ViDu}}">{{this.tuvung.ViDu}}</textarea>
+            </div>
+            <div class="col-md-12 mt-3 d-flex flex-nowrap justify-content-center">
+                <label class="col-md-2">Link hình ảnh:</label>
+                <input class="col-md-7 form-control border" type="text" placeholder="Link hình ảnh" name="fileHinh"
+                    value="{{this.tuvung.FileHinhAnh}}">
+            </div>
+            <div class="col-md-11 ml-5" style="margin-top:20px; display:flex; justify-content:space-between">
+                <a class="btn" href="/admin/tuvung" id="Quaylai">
+                <i class="fa fa-backward">&nbsp;</i>Quay lại
+                </a>
+                <button class="btn " type="submit" id="Them">
+                    <i class="fa fa-check">&nbsp;</i>Lưu lại</button>
+            </div>
+        </form>
+    </div>
+
+</div>
