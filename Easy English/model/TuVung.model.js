@@ -1,6 +1,10 @@
 var db = require('../utils/Database');
 module.exports = {
 
+  del: entity => {
+    return db.delete('chudebaihoc', 'idCDBaiHoc', entity);
+  },
+
   add: entity => {
     return db.add('chudebaihoc', entity);
   },
@@ -16,17 +20,23 @@ module.exports = {
     return db.load(`select * from chudebaihoc as cd , dstuvung as tv WHERE tv.Xoa = 0 and tv.CDBaiHoc = cd.idCDBaiHoc and cd.idCDBaiHoc = '${id}'`);
   },
 
-  getLoaibyTen : ten =>{
+  getLoaibyTen: ten => {
     return db.load(`select * from chudebaihoc where TenBai = '${ten}' and Xoa = 0`)
   },
 
   update: entity => {
     return db.update('dstuvung', 'idTuVung', entity);
   },
+  updatetvcd: entity => {
+    return db.update('dstuvung', 'CDBaiHoc', entity);
+  },
+  updatecd: entity => {
+    return db.update('chudebaihoc', 'idCDBaiHoc', entity);
+  },
   addds: entity => {
     return db.add('dstuvung', entity);
   },
-  getTVbyID : id => {
+  getTVbyID: id => {
     return db.load(`select * from dstuvung where Xoa = 0 and idTuVung = '${id}' and Xoa = 0`)
   },
   getIDByTenTV: ten => {

@@ -37,7 +37,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/quanly', require('./router/admin-router/indexAdmin'))
 app.use('/quanly', require('./router/admin-router/QLBaiViet'))
 
-app.use('/quanly/tuvung', require('./router/admin-router/QLTuVung'))
+app.use('/quanly/tuvung', require('./router/user-router/QLTuVung'))
 
 app.use('/login', require('./router/user-router/login'))
 app.use('/', require('./router/user-router/index'))
