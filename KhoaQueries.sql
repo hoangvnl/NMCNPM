@@ -4,3 +4,9 @@ select * from botv where idtaikhoantao = 1
 select * from dstuvung where idbotv = 1
 --Lấy bộ từ vựng mình lưu về (thay số 1 cuối)
 select * from botvluu l left join botv b on l.idbotv = b.idbotv where b.congkhai = 1 and l.idtaikhoan = 1
+
+-- fulltext search
+select * from botv where tenBoTV LIKE "%an%"
+select * from botv where tenBoTV LIKE "%an uong%"
+
+select * from botv where match(tenBoTV) AGAINST("van phong");
