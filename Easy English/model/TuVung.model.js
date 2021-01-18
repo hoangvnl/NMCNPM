@@ -14,7 +14,7 @@ module.exports = {
   },
 
   listBaiHoc: () => {
-    return db.load('select * from chudebaihoc where LoaiBai = 1 and Xoa = 0');
+    return db.load('select * from botv where congkhai = 1');
   },
   listTVbyLoai: id => {
     return db.load(`select * from chudebaihoc as cd , dstuvung as tv WHERE tv.Xoa = 0 and tv.CDBaiHoc = cd.idCDBaiHoc and cd.idCDBaiHoc = '${id}'`);

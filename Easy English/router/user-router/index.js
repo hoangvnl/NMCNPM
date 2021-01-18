@@ -7,6 +7,7 @@ var userModel = require('../../model/thanhvien.model');
 var abcModel = require('../../model/DSmuchoc.model');
 var randomstring = require("randomstring");
 var nodemailer = require('nodemailer')
+const botvModel = require('../../model/BoTV.model');
 
 router.get('/getnewpassword', (req, res) => {
     res.render('user/LayLaiMatKhau', {
@@ -155,7 +156,7 @@ router.get('/:idCM', (req, res, next) => {
 
     Promise.all([
         abcModel.baiviet(),
-        abcModel.chude(id),
+        botvModel.allPublic(),
         abcModel.dsbaiviet(limit, offset),
         abcModel.countbaiviet(id),
         abcModel.dsbaikt(id),
@@ -183,6 +184,7 @@ router.get('/:idCM', (req, res, next) => {
             })
         }
         if (id == 1 || id == 3 || id == 4 || id == 5) {
+            console.log(row2);
             res.render('user/introduction', {
                 Chude: row2,
                 layout: './index'
@@ -221,7 +223,7 @@ router.get('/:idCM/:idCD', (req, res, next) => {
 
     Promise.all([
         abcModel.baiviet(),
-        abcModel.chude(id),
+        botvModel.allPublic(),
         abcModel.tuvung(id2),
         abcModel.nguphap(id2),
         abcModel.dsluyennghe(id2, limit, offset),

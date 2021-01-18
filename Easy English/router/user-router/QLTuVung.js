@@ -3,11 +3,12 @@ var router = express.Router();
 var moment = require('moment');
 var passport = require('passport');
 var TVModel = require('../../model/TuVung.model')
+const botvModel = require('../../model/BoTV.model')
 
 router.get('/', (req, res) => {
 
     Promise.all([
-        TVModel.listBaiHoc(),
+        botvModel.allPublic(),
         TVModel.all(),
 
     ]).then(([rows1, rows2]) => {
@@ -35,8 +36,8 @@ router.post('/loc', (req, res, next) => {
     }
     else {
         Promise.all([
-            TVModel.listBaiHoc(),
-            TVModel.listTVbyLoai(id)
+            // TVModel.listBaiHoc(),
+            // TVModel.listTVbyLoai(id)
         ]).then(([cate1, cate2]) => {
             var stt = 0;
             var i = 0;
@@ -46,7 +47,7 @@ router.post('/loc', (req, res, next) => {
                 i += 1;
             }
             for (const c of cate1) {
-                if (c.idCDBaiHoc === +id) {
+                if (c.idbotv === +id) {
                     c.isSelected = true;
                 }
             }

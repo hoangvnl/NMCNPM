@@ -34,8 +34,9 @@ app.set('view engine', 'hbs');
 app.use(require('./middlewares/auth-mdw'));
 app.use(express.static(__dirname + '/public'));
 
-app.use('/quanly', require('./router/admin-router/indexAdmin'))
+app.use('/admin', require('./router/admin-router/indexAdmin'))
 app.use('/quanly', require('./router/admin-router/QLBaiViet'))
+app.use('/admin/tuvung', require('./router/admin-router/QLTuVung'))
 
 app.use('/quanly/tuvung', require('./router/user-router/QLTuVung'))
 

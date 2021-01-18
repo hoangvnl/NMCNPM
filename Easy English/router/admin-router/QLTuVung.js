@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var moment = require('moment');
 var passport = require('passport');
-var TVModel = require('../../model/TuVung.model')
+var TVModel = require('../../model/TuVung.model');
+const botvModel = require('../../model/BoTV.model');
 
 router.get('/', (req, res) => {
 
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
         res.render('admin/TuVung/QLTuVung', {
             chude: rows1,
             listTV: rows2,
-            layout: './index'
+            layout: './indexAdmin'
         })
     })
 })
@@ -30,13 +31,14 @@ router.post('/loc', (req, res, next) => {
     var id = req.body.LoaiTu;
 
     if (isNaN(id)) {
-        res.redirect('/quanly/tuvung')
+        res.redirect('/admin/tuvung')
     }
     else {
         Promise.all([
             TVModel.listBaiHoc(),
-            TVModel.listTVbyLoai(id)
-        ]).then(([cate1, cate2]) => {
+            TVModel.listTVbyLoai(id),
+            botvModel.nguoiTao(+id)
+        ]).then(([cate1, cate2, createdByList]) => {
             var stt = 0;
             var i = 0;
             for (const c of cate2) {
@@ -44,15 +46,19 @@ router.post('/loc', (req, res, next) => {
                 cate2[i].a = stt;
                 i += 1;
             }
+            // console.log(cate1)
             for (const c of cate1) {
-                if (c.idCDBaiHoc === +id) {
+                if (c.idbotv === +id) {
                     c.isSelected = true;
                 }
             }
+            const createdBy = createdByList[0];
             res.render('admin/TuVung/QLTuVung', {
                 chude: cate1,
                 listTV: cate2,
-                layout: './index'
+                daloc: true,
+                createdBy,
+                layout: './indexAdmin'
             });
         })
     }

@@ -1,0 +1,1 @@
+trong route->user-router->QLTuVung.js sửa cái row1 lại botvModel.allByUserID(id)

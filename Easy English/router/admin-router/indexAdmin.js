@@ -10,8 +10,8 @@ var TVModel = require('../../model/TuVung.model');
 
 router.get('/', (req, res, next) => {
 
-    res.render('admin/index-Admin', {
-        layout: './index'
+    res.render('admin/welcome', {
+        layout: './indexAdmin'
     })
 })
 
@@ -30,7 +30,7 @@ router.get('/taikhoan', (req, res, next) => {
         res.render('admin/TaiKhoan/QLTaiKhoan', {
             listTk: rows1,
             listPH: rows2,
-            layout: './index'
+            layout: './indexAdmin'
         })
     }).catch(next);
 })
@@ -62,7 +62,7 @@ router.post('/taikhoan', (req, res, next) => {
             res.render('admin/TaiKhoan/QLTaiKhoan', {
                 listPH: cate1,
                 listTk: cate2,
-                layout: './index'
+                layout: './indexAdmin'
             });
         })
     }

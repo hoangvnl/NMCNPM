@@ -134,7 +134,7 @@
     </div>
     <div class="col-md-12 ml-5 mt-3 d-flex flex-nowrap">
         <div class="col-md-9">
-            <form method="POST" action="/quanly/tuvung/loc" id="formcate">
+            <form method="POST" action="/admin/tuvung/loc" id="formcate">
                 <div class="d-flex flex-nowrap">
                     <select class="form-control border" id="select" name="LoaiTu" style="height: 40px; width:300px">
                         <option>Chọn bộ từ vựng</option>
@@ -143,10 +143,10 @@
                         {{/each}}
                     </select>
                     &nbsp;
-                    <a href="#" class="ml-2 mt-2" data-toggle="modal" data-target="#ThemCat-Modal"><i
+                    {{!-- <a href="#" class="ml-2 mt-2" data-toggle="modal" data-target="#ThemCat-Modal"><i
                             class="fas fa-plus-circle"></i>
                         Thêm bộ từ vựng
-                    </a>
+                    </a> --}}
                     {{#if daloc}}
                     <a href="#" class="ml-4 mt-2" id="xoa" data-toggle="modal" data-target="#XoaCat-Modal">
                         <i class="fas fa-times-circle" aria-hidden="true"></i>
@@ -247,6 +247,9 @@
     </form> --}}
 
 
+    {{#if this.createdBy}}
+        <div>Created by : {{this.createdBy.hoten}}</div>
+    {{/if}}
     <div class="col-md-12 mt-3">
         <table class="table table-hover table-dark word-table datatable" id="myTable">
             <thead>
