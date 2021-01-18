@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var userModel = require('../../model/thanhvien.model')
 
-router.get('/', (req, res,next) => {
+router.get('/', (req, res, next) => {
     res.render('user/login', {
         layout: './index'
     });
@@ -25,16 +25,19 @@ router.post('/', (req, res, next) => {
                 return next(err);
             }
             else {
-                
+
                 userModel.getPassbyEmail(user.email).then(tk => {
                     if (tk[0].phanhe === 2) {
-                         return res.redirect('/');
+
+                        req.session.userAuth = user;
+                        console.log(req.session.userAuth);
+                        return res.redirect('/');
                     }
                     else {
                         return res.redirect('/admin')
                     }
                 })
-                
+
             }
 
         });

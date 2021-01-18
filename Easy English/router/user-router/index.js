@@ -102,6 +102,9 @@ router.get('/logout', (req, res, next) => {
 
 router.post('/logout', (req, res, next) => {
     req.logOut();
+    req.session.userAuth = null;
+    console.log(1);
+    console.log('da thoat');
     res.redirect('/login')
 })
 

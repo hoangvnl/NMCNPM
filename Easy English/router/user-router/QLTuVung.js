@@ -5,6 +5,8 @@ var passport = require('passport');
 var TVModel = require('../../model/TuVung.model')
 const botvModel = require('../../model/BoTV.model')
 
+//req.session.userAuth;
+
 router.get('/', (req, res) => {
 
     Promise.all([
