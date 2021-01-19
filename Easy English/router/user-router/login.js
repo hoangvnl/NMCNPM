@@ -25,15 +25,14 @@ router.post('/', (req, res, next) => {
                 return next(err);
             }
             else {
-
                 userModel.getPassbyEmail(user.email).then(tk => {
+                    req.session.userAuth = user;
                     if (tk[0].phanhe === 2) {
-
-                        req.session.userAuth = user;
-                        console.log(req.session.userAuth);
+                        // console.log(req.session.userAuth);
                         return res.redirect('/');
                     }
                     else {
+                        // console.log(req.session.userAuth);
                         return res.redirect('/admin')
                     }
                 })

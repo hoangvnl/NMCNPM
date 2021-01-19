@@ -24,13 +24,23 @@
     {{#if isAuthenticated}}
     <div class="container">
         <div class="row">
+            {{#if this.isSaved}}
+                <div class="col-md-12 mx-auto blog-content text-danger font-weight-bold">Bộ từ vựng này đã được lưu về!</div>
+            {{/if}}
+            {{#if this.isAvailable}}
+            <div class="col-md-12  mb-5 mx-auto blog-content text-success font-weight-bold">
+                <a href="#" class="ml-3 mt-2  shadow p-2 bg-white rounded" id="luu" data-toggle="modal" data-target="#SaveCat-Modal">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                    Lưu bộ từ vựng
+                </a>
+            </div>
+                
+            {{/if}}
             <div class="col-md-12 mx-auto blog-content ">
                 <div class="shadow pt-3 bg-white rounded">
                     {{#each Tuvung}}
                     <div class="item-content col-md-12 d-flex flex-nowrap" style="font-size: 14px;">
-                        <span class="col-md-2">
-                            <img style="width: 150px; height: 100px; border: 1px solid #eee;" src="{{FileHinhAnh}}">
-                        </span>
+                        
                         <div class="pl-5">
                             <b style="color: #337ab7;">{{TenTuVung}}</b>
                             ({{LoaiTu}})
@@ -47,6 +57,31 @@
             </div>
         </div>
     </div>
+
+
+    <form action="/quanly/tuvung/luuBoTV" id="SaveForm" method="POST">
+        <input type="text" value="{{idcd}}" name="idcd" hidden>
+
+        <div class="modal fade" id="SaveCat-Modal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="delModalLabel"><b>LƯU BỘ TỪ VỰNG</b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn muốn lưu bộ từ vựng này?
+                    </div>
+                    <div class="col-md-12 p-3 text-center">
+                        <a href="javascript: $('#SaveForm').submit()" class="btn btn-danger">Đồng ý</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
 
     <div class="container mx-auto blog-content">

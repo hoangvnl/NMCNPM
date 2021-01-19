@@ -40,7 +40,7 @@ router.post('/:idBH', (req, res, next) => {
             res.redirect('back');
         })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
             res.end('error occured!')
         });
 });

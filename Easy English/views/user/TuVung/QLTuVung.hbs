@@ -148,10 +148,17 @@
                         Thêm bộ từ vựng
                     </a>
                     {{#if daloc}}
-                    <a href="#" class="ml-4 mt-2" id="xoa" data-toggle="modal" data-target="#XoaCat-Modal">
+                    <a href="#" class="ml-3 mt-2" id="xoa" data-toggle="modal" data-target="#XoaCat-Modal">
                         <i class="fas fa-times-circle" aria-hidden="true"></i>
                         Xóa bộ từ vựng
                     </a>
+                    {{/if}}
+                    {{#if sohuu}}
+                    {{else}}
+                        <a href="#" class="ml-8 mt-2" id="modal" data-toggle="modal" data-target="#BoLuu-Modal">
+                        <i class="fa fa-ban" aria-hidden="true"></i>
+                        Bỏ lưu bộ từ vựng
+                        </a>
                     {{/if}}
 
                 </div>
@@ -184,7 +191,14 @@
                                 <input type="text" class="form-control border" name="Cate" placeholder="Tên bộ từ vựng">
                             </div>
                         </div>
-
+                        <div class="form-group row ">
+                            <div class="col-md-12">
+                                <select name="congkhai" >
+                                    <option value="1">Công khai</option>
+                                    <option value="0">Riêng tư</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-12 p-3 text-center">
                         <button type="submit" class="btn btn-exit">Thêm</button>
@@ -218,34 +232,30 @@
         </div>
     </form>
 
-    {{!-- <form action="/admin/tuvung/EditCate" id="EditForm" method="POST">
-        <div class="modal fade" id="EditCat-Modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+
+    <form action="/quanly/tuvung/unsaveCate" id="unSaveForm" method="POST">
+        <input type="text" value="{{idcd}}" name="idcd" hidden>
+
+        <div class="modal fade" id="BoLuu-Modal" tabindex="-1" role="dialog" aria-labelledby="unsaveModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-black" id="logoutModalLabel"><b>CHỈNH SỬA LOẠI TỪ VỰNG</b></h5>
+                        <h5 class="modal-title text-black" id="unsaveModalLabel"><b>BỎ LƯU BỘ TỪ VỰNG</b></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group row ">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control border" name="Cate"
-                                    placeholder="Tên loại từ vựng">
-                            </div>
-                        </div>
-
+                        Bạn thật sự muốn bỏ lưu bộ từ vựng này?
                     </div>
                     <div class="col-md-12 p-3 text-center">
-                        <button type="submit" class="btn btn-exit">Lưu lại</button>
+                        <a href="javascript: $('#unSaveForm').submit()" class="btn btn-danger">Đồng ý</a>
                     </div>
                 </div>
             </div>
         </div>
-    </form> --}}
-
+    </form>
 
     <div class="col-md-12 mt-3">
         <table class="table table-hover table-dark word-table datatable" id="myTable">
@@ -313,7 +323,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="formAdd" action="/quanly/themtv" method="post">
+                <form id="formAdd" action="/quanly/tuvung/themtv" method="post">
                     <div class="form-group row ml-5">
                         <div class="col-md-6">
                             <input name="tentv" type="text" class="form-control border" placeholder="Tên từ vựng">
@@ -325,7 +335,7 @@
 
                                 <option value="">Loại chủ đề</option>
                                 {{#each this.chude}}
-                                <option value="{{idCDBaiHoc}}">{{TenBai}}</option>
+                                <option value="{{idbotv}}">{{tenBoTV}}</option>
                                 {{/each}}
                             </select>
                         </div>

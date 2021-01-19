@@ -8,6 +8,7 @@ var abcModel = require('../../model/DSmuchoc.model');
 var randomstring = require("randomstring");
 var nodemailer = require('nodemailer')
 const botvModel = require('../../model/BoTV.model');
+const tvModel = require('../../model/TV.model');
 
 router.get('/getnewpassword', (req, res) => {
     res.render('user/LayLaiMatKhau', {
@@ -118,7 +119,7 @@ router.get('/', (req, res) => {
                 layout: './index'
             })
         }).catch(err => {
-            console.log(err);
+            // console.log(err);
             res.end('error occured!')
         })
 });
@@ -131,7 +132,7 @@ router.get('/trangchu', (req, res) => {
                 layout: './index'
             })
         }).catch(err => {
-            console.log(err);
+            // console.log(err);
             res.end('error occured!')
         })
 });
@@ -144,7 +145,7 @@ router.get('/0', (req, res) => {
                 layout: './index'
             })
         }).catch(err => {
-            console.log(err);
+            // console.log(err);
             res.end('error occured!')
         })
 });
@@ -157,9 +158,12 @@ router.get('/:idCM', (req, res, next) => {
     var limit = 6;
     var offset = (page - 1) * limit;
 
+    // console.log(req.session.idTaiKhoan)
+
     Promise.all([
         abcModel.baiviet(),
-        botvModel.allPublic(),
+        botvModel.allByUserID(req.session.idTaiKhoan),
+        // botvModel.allPublic(),
         abcModel.dsbaiviet(limit, offset),
         abcModel.countbaiviet(id),
         abcModel.dsbaikt(id),
@@ -187,7 +191,7 @@ router.get('/:idCM', (req, res, next) => {
             })
         }
         if (id == 1 || id == 3 || id == 4 || id == 5) {
-            console.log(row2);
+            // console.log(row2);
             res.render('user/introduction', {
                 Chude: row2,
                 layout: './index'
@@ -227,7 +231,7 @@ router.get('/:idCM/:idCD', (req, res, next) => {
     Promise.all([
         abcModel.baiviet(),
         botvModel.allPublic(),
-        abcModel.tuvung(id2),
+        tvModel.allByChuDe(id2),
         abcModel.nguphap(id2),
         abcModel.dsluyennghe(id2, limit, offset),
         abcModel.countdsbainghe(id2),
@@ -245,7 +249,7 @@ router.get('/:idCM/:idCD', (req, res, next) => {
         }
 
         for (const d of row2) {
-            if (d.idCDBaiHoc === +id2) {
+            if (d.idbotv === +id2) {
                 d.isSelected = true;
             }
         }
@@ -266,12 +270,49 @@ router.get('/:idCM/:idCD', (req, res, next) => {
             })
         }
         if (id == 1) {
-            res.render('user/vocabulary', {
-                Chude: row2,
-                Tuvung: row3,
-                CommentBH: row9,
-                layout: './index'
-            })
+            
+            if(req.session.userAuth != undefined) {
+
+                
+
+                botvModel.checkSave(req.session.userAuth.idTaiKhoan, id2).then(row => {
+                    const checkSaved = row;
+
+                    botvModel.checkAvailable(req.session.userAuth.idTaiKhoan, id2).then(row => {
+                        const checkAvailable = row;
+                        let isSaved = false;
+                        let isAvailable = false;
+                        if(checkSaved.length != 0) {
+                            isSaved = true;
+                        }
+                        if(checkAvailable.length != 0) {
+                            isAvailable = true;
+                        }
+                        res.render('user/vocabulary', {
+                            Chude: row2,
+                            Tuvung: row3,
+                            CommentBH: row9,
+                            isSaved,
+                            isAvailable,
+                            idcd: id2,
+                            layout: './index'
+                        })
+                    })
+
+                    
+                });
+                
+                
+            } else {
+                res.render('user/vocabulary', {
+                    Chude: row2,
+                    Tuvung: row3,
+                    CommentBH: row9,
+                    layout: './index'
+                })
+            }
+            
+            
         }
         if (id == 3 || id == 4) {
             res.render('user/grammar', {
@@ -323,7 +364,7 @@ router.post('/:idCM/:idBH', (req, res, next) => {
             res.redirect('back');
         })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
             res.end('error occured!')
         });
 })
@@ -370,10 +411,10 @@ router.post('/QuenMatKhau', (req, res, next) => {
         }
         transporter.sendMail(mainOptions, function (err, info) {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.redirect('/');
             } else {
-                console.log('Message sent: ' + info.response);
+                // console.log('Message sent: ' + info.response);
                 res.redirect('/');
             }
         });

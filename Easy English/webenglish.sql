@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 23, 2019 lúc 09:13 PM
--- Phiên bản máy phục vụ: 10.1.39-MariaDB
--- Phiên bản PHP: 7.3.5
+-- Thời gian đã tạo: Th1 19, 2021 lúc 10:10 AM
+-- Phiên bản máy phục vụ: 10.4.17-MariaDB
+-- Phiên bản PHP: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `webenglish`
 --
+CREATE DATABASE IF NOT EXISTS `webenglish` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `webenglish`;
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,52 @@ INSERT INTO `binhluan` (`idBL`, `NoiDung`, `NgayDang`, `NguoiDang`, `ViTri`, `Xo
 (6, 'sdadasd', '2019-06-23', 8, 1, 0),
 (7, 'haha', '2019-06-23', 8, 1, 0),
 (8, 'hihi', '2019-06-23', 8, 2, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `botv`
+--
+
+CREATE TABLE `botv` (
+  `idbotv` int(10) NOT NULL,
+  `tenBoTV` varchar(100) NOT NULL,
+  `idtaikhoantao` int(10) NOT NULL,
+  `congkhai` int(1) NOT NULL,
+  `idLoaiBai` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `botv`
+--
+
+INSERT INTO `botv` (`idbotv`, `tenBoTV`, `idtaikhoantao`, `congkhai`, `idLoaiBai`) VALUES
+(1, 'Ăn uống', 1, 1, 1),
+(2, 'Vật dụng trong nhà', 1, 1, 1),
+(3, 'Nhà cửa', 2, 1, 1),
+(4, 'Văn phòng', 2, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `botvluu`
+--
+
+CREATE TABLE `botvluu` (
+  `idLuu` int(10) NOT NULL,
+  `idtaikhoan` int(10) NOT NULL,
+  `idbotv` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `botvluu`
+--
+
+INSERT INTO `botvluu` (`idLuu`, `idtaikhoan`, `idbotv`) VALUES
+(1, 1, 3),
+(2, 1, 4),
+(3, 2, 1),
+(4, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -216,8 +263,9 @@ INSERT INTO `dscautruc` (`idCauTruc`, `CDBaiHoc`, `NoiDung`, `NgayDang`, `Xoa`) 
 --
 
 CREATE TABLE `dstuvung` (
-  `idTuVung` int(11) NOT NULL,
-  `CDBaiHoc` int(11) NOT NULL,
+  `idTuVung` int(10) NOT NULL,
+  `idbotv` int(10) NOT NULL,
+  `CDBaiHoc` int(10) NOT NULL,
   `TenTuVung` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `PhienAm` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `FileAmThanh` varchar(450) COLLATE utf8_unicode_ci NOT NULL,
@@ -232,14 +280,18 @@ CREATE TABLE `dstuvung` (
 -- Đang đổ dữ liệu cho bảng `dstuvung`
 --
 
-INSERT INTO `dstuvung` (`idTuVung`, `CDBaiHoc`, `TenTuVung`, `PhienAm`, `FileAmThanh`, `FileHinhAnh`, `YNghia`, `ViDu`, `LoaiTu`, `Xoa`) VALUES
-(1, 1, 'eat', '/i:t/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=eat&tl=en&total=1&idx=0&textlen=3&tk=750424.913014&client=webapp&prev=input', 'https://media.mnn.com/assets/images/2018/08/child_eating_broccoli.jpg.653x0_q80_crop-smart.jpg', 'Ăn', 'He cannot eat, because of his serious toothache.\r\nAnh ta không thể ăn vì quá đau răng.', 'Verb', 0),
-(2, 1, 'drink', '/driɳk/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=drink&tl=en&total=1&idx=0&textlen=5&tk=187624.279000&client=webapp&prev=input&ttsspeed=0.24', 'https://i0.wp.com/cdn.bloganchoi.com/wp-content/uploads/2018/12/uong-sua.jpg', '(Động từ) Uống\r\n(Danh từ) Đồ uống, thức uống', '(Động từ) I drink water. (Tôi uống nước)\r\n(Danh từ) soft drink (đồ uống nhẹ không có cồn)', 'Verb, Noun', 0),
-(3, 2, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
-(4, 2, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
-(5, 3, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
-(6, 4, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
-(7, 4, 'drink', '/driɳk/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=drink&tl=en&total=1&idx=0&textlen=5&tk=187624.279000&client=webapp&prev=input&ttsspeed=0.24', 'https://i0.wp.com/cdn.bloganchoi.com/wp-content/uploads/2018/12/uong-sua.jpg', '(Động từ) Uống (Danh từ) Đồ uống, thức uống', '(Động từ) I drink water. (Tôi uống nước) (Danh từ) soft drink (đồ uống nhẹ không có cồn)', 'Verb, Noun', 0);
+INSERT INTO `dstuvung` (`idTuVung`, `idbotv`, `CDBaiHoc`, `TenTuVung`, `PhienAm`, `FileAmThanh`, `FileHinhAnh`, `YNghia`, `ViDu`, `LoaiTu`, `Xoa`) VALUES
+(1, 1, 1, 'eat', '/i:t/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=eat&tl=en&total=1&idx=0&textlen=3&tk=750424.913014&client=webapp&prev=input', 'https://media.mnn.com/assets/images/2018/08/child_eating_broccoli.jpg.653x0_q80_crop-smart.jpg', 'Ăn', 'He cannot eat, because of his serious toothache.\r\nAnh ta không thể ăn vì quá đau răng.', 'Verb', 0),
+(2, 1, 1, 'drink', '/driɳk/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=drink&tl=en&total=1&idx=0&textlen=5&tk=187624.279000&client=webapp&prev=input&ttsspeed=0.24', 'https://i0.wp.com/cdn.bloganchoi.com/wp-content/uploads/2018/12/uong-sua.jpg', '(Động từ) Uống\r\n(Danh từ) Đồ uống, thức uống', '(Động từ) I drink water. (Tôi uống nước)\r\n(Danh từ) soft drink (đồ uống nhẹ không có cồn)', 'Verb, Noun', 0),
+(3, 2, 2, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
+(4, 2, 2, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
+(5, 3, 3, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
+(6, 4, 4, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
+(7, 4, 4, 'drink', '/driɳk/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=drink&tl=en&total=1&idx=0&textlen=5&tk=187624.279000&client=webapp&prev=input&ttsspeed=0.24', 'https://i0.wp.com/cdn.bloganchoi.com/wp-content/uploads/2018/12/uong-sua.jpg', '(Động từ) Uống (Danh từ) Đồ uống, thức uống', '(Động từ) I drink water. (Tôi uống nước) (Danh từ) soft drink (đồ uống nhẹ không có cồn)', 'Verb, Noun', 0),
+(8, 6, 0, 'hello', '', '', '', 'xin chao', 'sdafsdf', 'Verb', 1),
+(9, 6, 0, 'h2', '', '', '', 'asdfaf', 'asdfadsf', 'Noun', 1),
+(10, 6, 6, 'hello', '', '', '', 'xin chao2', 'adsf222', 'Adjective', 0),
+(11, 8, 0, 'public', '', '', '', 'công cộng', 'publicccccccccccc', 'Adjective', 0);
 
 -- --------------------------------------------------------
 
@@ -248,7 +300,7 @@ INSERT INTO `dstuvung` (`idTuVung`, `CDBaiHoc`, `TenTuVung`, `PhienAm`, `FileAmT
 --
 
 CREATE TABLE `loaibai` (
-  `idLoaiBai` int(11) NOT NULL,
+  `idLoaiBai` int(10) NOT NULL,
   `TenLoaiBai` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `Xoa` int(11) NOT NULL,
   `LBcha` int(11) NOT NULL
@@ -313,11 +365,9 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`idTaiKhoan`, `hoten`, `ngaysinh`, `matKhau`, `email`, `phanhe`, `NgayTaoTK`, `KeyPass`, `Xoa`) VALUES
-(5, 'TranVanQuy', '2019-06-01', '$2b$10$SF8RpQcO4iF4VbI2ZTB93u3LSouxkUmDTcPuoID/EMlvlcnonJQym', 'tvq@gmail.com', 2, '2019-06-08', '0', 1),
-(7, 'NTVAn', '2019-05-30', '$2b$10$ezqNcHrR1UPU3yMD8shjHO/L15F0rG0xVx/YZpN569V.rsb0KJaj2', 'ntvan@gmail.com', 1, '2019-06-08', '0', 0),
-(8, 'Nguyễn Thị Việt An', '2019-06-05', '$2b$10$MiA.zjqK7HkaGmdcuFM0EOySR7JTwcu8g/iF/2q4ZLQCzqW.x/ue2', 'anh.vy98@gmail.com', 2, '2019-06-12', '0', 0),
-(9, 'Nguyễn Thị Việt An', '2019-06-01', '$2b$10$jyj8xc.LWGa9P1ri3gRoieYa3Xg1pe3nTnzje6pP1Y2yZgMQ/93zi', 'ntvan@gmail.com', 1, '2019-06-17', '0', 0),
-(11, 'L H ', '2019-01-05', '$2b$10$gZfhq2HWoZwpKTDBSd0PBuv4FqKiZBsNR6i3ijD/EIYqBrYH2tt8G', 'lchung3997@gmail.com', 1, '2019-06-23', 'uqYireym7Q', 0);
+(0, 'Khoa', '2021-01-06', '$2a$10$E1z7.wYpC1aShGQPmATQcOjq06hi2Fqyv7Wv3T11xay1a1BKaznhy', 'khoa@gmail.com', 1, '2021-01-08', 'rlQPUY7lWk', 0),
+(1, 'Hoang', '2021-01-06', '$2a$10$YOCLOYlwO8j1rYvJMKdl4eUSRZIonxvYRVHPWwyIKzd5IUnH7Wlt6', 'hoang@gmail.com', 2, '2021-01-08', 'nxMXPDjsoP', 0),
+(2, 'Vu', '2021-01-06', '$2a$10$P2nFyNz7tXv9j5gsxPnB9ue723KRk.8konRCxux11VpfiBT.5JhEC', 'vu@gmail.com', 2, '2021-01-08', 'qGweK3KalW', 0);
 
 -- --------------------------------------------------------
 
@@ -361,6 +411,19 @@ ALTER TABLE `baitest`
 --
 ALTER TABLE `binhluan`
   ADD PRIMARY KEY (`idBL`);
+
+--
+-- Chỉ mục cho bảng `botv`
+--
+ALTER TABLE `botv`
+  ADD PRIMARY KEY (`idbotv`);
+
+--
+-- Chỉ mục cho bảng `botvluu`
+--
+ALTER TABLE `botvluu`
+  ADD PRIMARY KEY (`idLuu`),
+  ADD UNIQUE KEY `idtaikhoan` (`idtaikhoan`,`idbotv`);
 
 --
 -- Chỉ mục cho bảng `chudebaihoc`
@@ -427,6 +490,12 @@ ALTER TABLE `binhluan`
   MODIFY `idBL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT cho bảng `botv`
+--
+ALTER TABLE `botv`
+  MODIFY `idbotv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT cho bảng `chudebaihoc`
 --
 ALTER TABLE `chudebaihoc`
@@ -448,13 +517,13 @@ ALTER TABLE `dscautruc`
 -- AUTO_INCREMENT cho bảng `dstuvung`
 --
 ALTER TABLE `dstuvung`
-  MODIFY `idTuVung` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idTuVung` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `loaibai`
 --
 ALTER TABLE `loaibai`
-  MODIFY `idLoaiBai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idLoaiBai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `phanhe`
@@ -466,7 +535,7 @@ ALTER TABLE `phanhe`
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `idTaiKhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idTaiKhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tips`
