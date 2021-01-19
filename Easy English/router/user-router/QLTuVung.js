@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
     ]).then(([rows1, rows2]) => {
 
-        console.log(rows1);
+        // console.log(rows1);
 
         var dem = 0;
         var i = 0;
@@ -95,7 +95,7 @@ router.post('/addCate', (req, res, next) => {
         idtaikhoantao: req.session.userAuth.idTaiKhoan,
         congkhai: req.body.congkhai
     }
-    console.log(entity);
+    // console.log(entity);
     // var entity = {
     //     TenBai: ten,
     //     LoaiBai: 1,
@@ -248,6 +248,21 @@ router.post('/themtv',(req,res)=>{
     tvModel.add(entity).then(id => {
         res.redirect('/quanly/tuvung')
     })
+})
+
+router.get('/search', (req, res) => {
+    // console.log(req.query);
+    const searchStr = '%' + req.query.search + '%';
+    // console.log(searchStr);
+    botvModel.search(searchStr).then(rows => {
+        console.log(rows);
+        res.render('user/TuVung/TimKiem', {
+            listBoTV: rows,
+            layout: './index'
+        })
+    }).catch(err => {
+        res.end('error occured')
+    });
 })
 
 

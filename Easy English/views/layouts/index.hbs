@@ -87,10 +87,20 @@
             </div>
 
             <div class="toggle-button d-flex flex-nowrap float-left">
-              <a href="" class="mr-3" role="button" id="dropdownMenuLink" data-toggle="dropdown"><i
-                  class="fas fa-search"></i></a>
-              <input class="form-control abc pl-3 dropdown-menu" aria-labelledby="dropdownMenuLink" type="search"
-                placeholder="Search" aria-label="Search">
+              
+
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle mr-2 bg-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Search
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <form action="/quanly/tuvung/search" id="searchForm" method="GET" class="d-flex dropdown-item">
+                      <input type="search" class="form-control me-2" name="search">
+                      <a class="mt-2" href="javascript: $('#searchForm').submit();"> <i class="fa fa-search" aria-hidden="true"></i> </a>
+                    </form>
+                  </div>
+                </div>
+                
               {{#if isAuthenticated}}
               <form id="frmSignout" action="/logout" method="POST">
                 <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"

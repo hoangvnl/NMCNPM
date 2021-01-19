@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="col-md-12 mt-3">
+        <table class="table table-hover" id="myTable">
+            <thead>
+                <tr class="text-dark">
+                    <th scope="col">Tên bộ từ vựng</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Người tạo</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.listBoTV}}
+                <tr>
+                    <td>{{tenBoTV}}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{hoten}}</td>
+                    <td><a href="/1/{{idbotv}}" class="badge badge-info"><i class="fa fa-eye" aria-hidden="true"></i> Chi tiết</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <a href="/1" class="btn btn-outline-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Về trang từ vựng</a>
+    </div>
+</div>

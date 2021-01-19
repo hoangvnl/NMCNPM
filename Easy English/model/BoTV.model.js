@@ -33,5 +33,8 @@ module.exports = {
     },
     checkAvailable(idtaikhoan, idbotv) {
         return db.load(`select * from botv where idtaikhoantao <> ${idtaikhoan} and congkhai = 1 and idbotv not in (select idbotv from botvluu where idtaikhoan = 1) and idbotv = ${idbotv}`)
+    },
+    search(string) {
+        return db.load(`Select botv.*, taikhoan.hoten from botv join taikhoan on botv.idtaikhoantao = taikhoan.idTaiKhoan where tenBoTV LIKE "${string}" and congkhai = 1`);
     }
 }
