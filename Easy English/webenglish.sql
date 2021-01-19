@@ -95,7 +95,8 @@ CREATE TABLE `botv` (
   `tenBoTV` varchar(100) NOT NULL,
   `idtaikhoantao` int(10) NOT NULL,
   `congkhai` int(1) NOT NULL,
-  `idLoaiBai` int(10) NOT NULL
+  `idLoaiBai` int(10) NOT NULL,
+  FULLTEXT(tenBoTV)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -140,7 +141,8 @@ CREATE TABLE `chudebaihoc` (
   `idCDBaiHoc` int(11) NOT NULL,
   `TenBai` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `LoaiBai` int(11) NOT NULL,
-  `Xoa` int(11) NOT NULL
+  `Xoa` int(11) NOT NULL,
+  FULLTEXT(TenBai)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -273,7 +275,8 @@ CREATE TABLE `dstuvung` (
   `YNghia` varchar(450) COLLATE utf8_unicode_ci NOT NULL,
   `ViDu` varchar(450) COLLATE utf8_unicode_ci NOT NULL,
   `LoaiTu` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `Xoa` int(11) NOT NULL
+  `Xoa` int(11) NOT NULL,
+  FULLTEXT(TenTuVung)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -357,7 +360,8 @@ CREATE TABLE `taikhoan` (
   `phanhe` int(10) NOT NULL,
   `NgayTaoTK` date NOT NULL,
   `KeyPass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Xoa` int(11) NOT NULL
+  `Xoa` int(11) NOT NULL,
+  FULLTEXT(hoten)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
