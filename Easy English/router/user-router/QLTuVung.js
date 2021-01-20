@@ -65,6 +65,9 @@ router.post('/loc', (req, res, next) => {
             let sohuu = false;
             if(cate3[0].idtaikhoantao == req.session.userAuth.idTaiKhoan) {
                 sohuu = true;
+                for(const c of cate2) {
+                    c['sohuu'] = true;
+                }
             }
             for (const c of cate1) {
                 // console.log(c);
@@ -75,6 +78,7 @@ router.post('/loc', (req, res, next) => {
                     c.isSelected = true;
                 }
             }
+            
             res.render('user/TuVung/QLTuVung', {
                 chude: cate1,
                 listTV: cate2,

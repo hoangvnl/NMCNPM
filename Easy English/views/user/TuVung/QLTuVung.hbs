@@ -288,13 +288,15 @@
                     <td>{{ChuDe}}</td>
                     <td>{{{YNghia}}}</td>
                     <td>{{ViDu}}</td>
-
-                    <td>
+                    {{#if this.sohuu}}
+                        <td>
                         <button class="btn mb-2" value="{{idTuVung}}" data-toggle="modal" data-target="#delModal"><i
                                 class="fas fa-minus-circle"></i></button>
                         <a class="btn" href="/quanly/tuvung/chinhsua/{{idTuVung}}"><i class="fas fa-wrench"></i></a>
 
                     </td>
+                    {{/if}}
+                    
                 </tr>
                 {{/each}}
             </tbody>
