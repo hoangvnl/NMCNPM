@@ -341,7 +341,10 @@
 
                                 <option value="">Loại chủ đề</option>
                                 {{#each this.chude}}
-                                <option value="{{idbotv}}">{{tenBoTV}}</option>
+                                {{#if sohuu}}
+                                    <option value="{{idbotv}}">{{tenBoTV}}</option>
+                                {{/if}}
+                                
                                 {{/each}}
                             </select>
                         </div>

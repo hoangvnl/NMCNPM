@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 19, 2021 lúc 10:10 AM
+-- Thời gian đã tạo: Th1 20, 2021 lúc 04:26 AM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 7.4.13
 
@@ -95,8 +95,7 @@ CREATE TABLE `botv` (
   `tenBoTV` varchar(100) NOT NULL,
   `idtaikhoantao` int(10) NOT NULL,
   `congkhai` int(1) NOT NULL,
-  `idLoaiBai` int(10) NOT NULL,
-  FULLTEXT(tenBoTV)
+  `idLoaiBai` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -107,7 +106,11 @@ INSERT INTO `botv` (`idbotv`, `tenBoTV`, `idtaikhoantao`, `congkhai`, `idLoaiBai
 (1, 'Ăn uống', 1, 1, 1),
 (2, 'Vật dụng trong nhà', 1, 1, 1),
 (3, 'Nhà cửa', 2, 1, 1),
-(4, 'Văn phòng', 2, 1, 1);
+(4, 'Văn phòng', 2, 1, 1),
+(6, 'Côn Trùng', 2, 1, 1),
+(7, 'Xương khớp', 2, 1, 1),
+(8, 'Các Loài Hoa', 2, 1, 1),
+(9, 'Hải sản', 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -141,8 +144,7 @@ CREATE TABLE `chudebaihoc` (
   `idCDBaiHoc` int(11) NOT NULL,
   `TenBai` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `LoaiBai` int(11) NOT NULL,
-  `Xoa` int(11) NOT NULL,
-  FULLTEXT(TenBai)
+  `Xoa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -275,8 +277,7 @@ CREATE TABLE `dstuvung` (
   `YNghia` varchar(450) COLLATE utf8_unicode_ci NOT NULL,
   `ViDu` varchar(450) COLLATE utf8_unicode_ci NOT NULL,
   `LoaiTu` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `Xoa` int(11) NOT NULL,
-  FULLTEXT(TenTuVung)
+  `Xoa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -291,10 +292,17 @@ INSERT INTO `dstuvung` (`idTuVung`, `idbotv`, `CDBaiHoc`, `TenTuVung`, `PhienAm`
 (5, 3, 3, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
 (6, 4, 4, 'Tooth-brush', '/´tu:θ¸brʌʃ/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=toothbrush&tl=en&total=1&idx=0&textlen=10&tk=662633.819527&client=webapp&prev=input', 'http://hstatic.net/114/1000041114/1/2016/6-22/cs_smart_2_grande.jpg', 'Bàn chải đánh răng', 'We use tooth-brush to brush our teeth. (Chúng ta sử dụng bản chải đánh răng để chải răng)', 'Noun', 0),
 (7, 4, 4, 'drink', '/driɳk/', 'https://translate.google.com/translate_tts?ie=UTF-8&q=drink&tl=en&total=1&idx=0&textlen=5&tk=187624.279000&client=webapp&prev=input&ttsspeed=0.24', 'https://i0.wp.com/cdn.bloganchoi.com/wp-content/uploads/2018/12/uong-sua.jpg', '(Động từ) Uống (Danh từ) Đồ uống, thức uống', '(Động từ) I drink water. (Tôi uống nước) (Danh từ) soft drink (đồ uống nhẹ không có cồn)', 'Verb, Noun', 0),
-(8, 6, 0, 'hello', '', '', '', 'xin chao', 'sdafsdf', 'Verb', 1),
-(9, 6, 0, 'h2', '', '', '', 'asdfaf', 'asdfadsf', 'Noun', 1),
-(10, 6, 6, 'hello', '', '', '', 'xin chao2', 'adsf222', 'Adjective', 0),
-(11, 8, 0, 'public', '', '', '', 'công cộng', 'publicccccccccccc', 'Adjective', 0);
+(13, 6, 0, 'Fly', '', '', '', 'Con ruồi', 'Fly flies away!', 'Noun', 0),
+(14, 6, 0, 'bee', '', '', '', 'Con ong', 'Bees love flowers', 'Noun', 0),
+(15, 6, 0, 'Moth', '', '', '', 'Con bướm đêm', 'He loves flower and butterflies!', 'Noun', 0),
+(16, 7, 0, 'Skeleton', '', '', '', 'Bộ xương', 'We found an old sheep skeleton up on the cliffs.', 'Noun', 0),
+(17, 7, 0, 'Skull', '', '', '', 'Sọ người', 'The soldiers discovered a pile of human skulls and bones.', 'Noun', 0),
+(18, 7, 0, 'Rib', '', '', '', 'Xương sườn', 'My son broke a rib when he fell off a ladder.', 'Noun', 0),
+(19, 8, 0, 'Daisy', '', '', '', 'Hoa cúc', 'The other two items on each sheet were chosen from among a rabbit, a cat, an apple, a bird, and a daisy.', 'Noun', 0),
+(20, 8, 0, 'Rose', '', '', '', 'Hoa hồng', 'She sent him a bunch of red roses.', 'Noun', 0),
+(21, 8, 0, 'Orchid', '', '', '', 'Hoa phong lan', 'Here, we sampled all animals that were found on or between the stems and leaves of an orchid stand.', 'Noun', 0),
+(22, 9, 0, 'Crab', '', '', '', 'Cua', 'We walked along the beach collecting small crabs.', 'Noun', 0),
+(23, 9, 0, 'Shrimp', '', '', '', 'Con tôm', 'grilled shrimp', 'Noun', 0);
 
 -- --------------------------------------------------------
 
@@ -360,8 +368,7 @@ CREATE TABLE `taikhoan` (
   `phanhe` int(10) NOT NULL,
   `NgayTaoTK` date NOT NULL,
   `KeyPass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Xoa` int(11) NOT NULL,
-  FULLTEXT(hoten)
+  `Xoa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -421,6 +428,7 @@ ALTER TABLE `binhluan`
 --
 ALTER TABLE `botv`
   ADD PRIMARY KEY (`idbotv`);
+ALTER TABLE `botv` ADD FULLTEXT KEY `tenBoTV` (`tenBoTV`);
 
 --
 -- Chỉ mục cho bảng `botvluu`
@@ -434,6 +442,7 @@ ALTER TABLE `botvluu`
 --
 ALTER TABLE `chudebaihoc`
   ADD PRIMARY KEY (`idCDBaiHoc`);
+ALTER TABLE `chudebaihoc` ADD FULLTEXT KEY `TenBai` (`TenBai`);
 
 --
 -- Chỉ mục cho bảng `dsbainghe`
@@ -452,6 +461,7 @@ ALTER TABLE `dscautruc`
 --
 ALTER TABLE `dstuvung`
   ADD PRIMARY KEY (`idTuVung`);
+ALTER TABLE `dstuvung` ADD FULLTEXT KEY `TenTuVung` (`TenTuVung`);
 
 --
 -- Chỉ mục cho bảng `loaibai`
@@ -470,6 +480,7 @@ ALTER TABLE `phanhe`
 --
 ALTER TABLE `taikhoan`
   ADD PRIMARY KEY (`idTaiKhoan`);
+ALTER TABLE `taikhoan` ADD FULLTEXT KEY `hoten` (`hoten`);
 
 --
 -- Chỉ mục cho bảng `tips`
@@ -497,7 +508,13 @@ ALTER TABLE `binhluan`
 -- AUTO_INCREMENT cho bảng `botv`
 --
 ALTER TABLE `botv`
-  MODIFY `idbotv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idbotv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT cho bảng `botvluu`
+--
+ALTER TABLE `botvluu`
+  MODIFY `idLuu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `chudebaihoc`
@@ -521,7 +538,7 @@ ALTER TABLE `dscautruc`
 -- AUTO_INCREMENT cho bảng `dstuvung`
 --
 ALTER TABLE `dstuvung`
-  MODIFY `idTuVung` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idTuVung` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `loaibai`
