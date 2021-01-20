@@ -147,7 +147,9 @@
                             class="fas fa-plus-circle"></i>
                         Thêm bộ từ vựng
                     </a>
-                    {{#if daloc}}
+                    {{#if all}}
+                    {{else}}
+                        {{#if sohuu}}
                     <a href="#" class="ml-3 mt-2" id="xoa" data-toggle="modal" data-target="#XoaCat-Modal">
                         <i class="fas fa-times-circle" aria-hidden="true"></i>
                         Xóa bộ từ vựng
@@ -160,6 +162,8 @@
                         Bỏ lưu bộ từ vựng
                         </a>
                     {{/if}}
+                    {{/if}}
+                    
 
                 </div>
 

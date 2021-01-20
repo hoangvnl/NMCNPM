@@ -38,7 +38,8 @@ router.get('/', (req, res) => {
         res.render('user/TuVung/QLTuVung', {
             chude: rows1,
             listTV: rows2,
-            sohuu: true,
+            sohuu: false,
+            all: true,
             layout: './index'
         })
     })
