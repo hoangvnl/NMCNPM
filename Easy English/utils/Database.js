@@ -4,7 +4,7 @@ var createConnection = () => {
   return mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: '1234',
     database: 'webenglish'
   });
 }
